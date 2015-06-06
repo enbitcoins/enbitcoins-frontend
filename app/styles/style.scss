@@ -1,0 +1,122 @@
+// Import files
+@import 'variables';
+@import 'home';
+@import 'tx';
+
+body {
+  background-color: $body-bg;
+  color: $font-color;
+  font-family: $font-family-base;
+  font-weight: 300;
+}
+
+// AngularJS Styles
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+  display: none !important;
+}
+
+[ng-click] {
+  cursor: pointer;
+}
+
+// General
+* {
+  outline: none !important;
+}
+
+.pull-rigth {
+  float: right;
+}
+
+.pull-left {
+  float: left;
+}
+
+.text-green {
+  color: $color-green;
+}
+
+.text-yellow {
+  color: $color-yellow;
+}
+
+.text-red {
+  color: $color-red;
+}
+
+.hide {
+  display: none;
+}
+
+#navbar {
+  height: 60px;
+  left: 0;
+  padding: 0 20px;
+  position: fixed;
+  right: 0;
+  z-index: 99999999;
+
+  .navbar-link {
+    display: block;
+
+    img {
+      height: 60px;
+    }
+  }
+
+  .navbar-link-circle {
+    border: 2px solid #fff;
+    border-radius: 23px;
+    color: #fff;
+    display: inline-block;
+    font-size: 24px;
+    margin-right: 15px;
+    margin-top: 6px;
+    padding: 5px;
+    text-align: center;
+    width: 33px;
+    opacity: .7;
+    transition: opacity .2s ease-in;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .price-box {
+    color: #fff;
+    display: inline-block;
+    float: right;
+    margin-left: 10px;
+    margin-top: 9px;
+    padding: 10px 20px;
+
+    &.up {
+      background: $color-green;
+    }
+
+    &.down {
+      background: $color-red;
+    }
+  }
+
+  .price-value {
+    color: #fff;
+  }
+}
+
+#wrapper {
+  background: url(../img/bg.jpg) center center no-repeat;
+  background-size: cover;
+  bottom: 0;
+  left: 0;
+  padding-top: 75px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}

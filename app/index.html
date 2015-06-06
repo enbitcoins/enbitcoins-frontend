@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html ng-app="enbitcoins">
+  <head>
+    <base href="/">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="enBitcoins">
+
+    <meta property="og:site_name" content="enBitcoins.com">
+    <meta property="og:url" content="https://enbitcoins.com/">
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://enbitcoins.com/img/og.png">
+    <meta property="og:type" content="website">
+
+    <title>enBitcoins.com</title>
+
+    <link rel="icon" type="image/png" href="/img/favicon.png">
+
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,600italic,600,300">
+
+    <!-- build:css({.tmp,app}) /css/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="../bower_components/angular/angular-csp.css">
+    <link rel="stylesheet" href="../bower_components/angular-growl/build/angular-growl.min.css">
+    <link rel="stylesheet" href="../bower_components/angular-bootstrap/ui-bootstrap-csp.css">
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css({.tmp,app}) /css/app.css -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- endbuild -->
+  </head>
+  <body ng-cloak class="ng-cloak">
+    <nav id="navbar">
+      <div class="pull-right">
+        <a class="navbar-link-circle" href="#">
+          <i class="fa fa-lock"></i>
+        </a>
+
+        <a class="navbar-link-circle" href="#">
+          <i class="fa fa-info"></i>
+        </a>
+
+        <a class="navbar-link-circle" href="https://facebook.com/enbitcoins" target="_blank" title="enBitcoins on Facebook">
+          <i class="fa fa-facebook"></i>
+        </a>
+
+        <a class="navbar-link-circle" href="https://twitter.com/enbitcoins" target="_blank" title="enBitcoins on Twitter">
+          <i class="fa fa-twitter"></i>
+        </a>
+
+        <a class="navbar-link-circle" href="https://github.com/enbitcoins" target="_blank" title="enBitcoins on GitHub">
+          <i class="fa fa-github-alt"></i>
+        </a>
+
+        <div class="price-box up">
+          <span class="price-value">$2834</span>
+          <span class="price-status">
+            <i class="fa fa-caret-up"></i>
+            <i class="fa fa-caret-down"></i>
+          </span>
+        </div>
+      </div>
+
+      <a href="/" class="navbar-link">
+        <img src="/img/logo.png" alt="enBitcoins.com">
+      </a>
+    </nav>
+
+    <div id="wrapper" ng-view></div>
+
+    <!-- build:js /js/vendor.js -->
+    <!-- bower:js -->
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-resource/angular-resource.js"></script>
+    <script src="../bower_components/angular-route/angular-route.js"></script>
+    <script src="../bower_components/moment/moment.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) /js/app.js -->
+    <script src="js/app.js"></script>
+
+    <script src="js/controllers/home.js"></script>
+    <script src="js/controllers/navbar.js"></script>
+    <script src="js/controllers/tx.js"></script>
+
+    <script src="js/filters/to-bitcoins.js"></script>
+
+    <script src="js/services/ticker.js"></script>
+    <script src="js/services/transactions.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) /js/templates.js -->
+    <script src="templates.js"></script>
+    <!-- endbuild -->
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-52523482-3', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </body>
+</html>

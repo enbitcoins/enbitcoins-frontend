@@ -1,0 +1,56 @@
+<div class="panel">
+  <div class="tx-status">
+    <i class="fa fa-clock-o"></i>
+    Pending
+  </div>
+
+  <div id="tx-info" equalize-height>
+    <div class="info-left info-pending">
+      <div class="content">
+        <h3>
+          <i class="fa fa-refresh fa-spin text-yellow"></i>
+          Esperando tu pago
+        </h3>
+        <h5>
+          viernes, 29 de mayo de 2015 17:21 UTC-3
+        </h5>
+      </div>
+    </div>
+
+    <div class="info-left info-success hide" ng-if="colkito">
+      <div class="content">
+        <h3>
+          <i class="fa fa-check text-green"></i>
+          Recibimos tu pago
+        </h3>
+        <h5>
+          viernes, 29 de mayo de 2015 17:21 UTC-3
+        </h5>
+
+        <h3>
+          <i class="fa fa-check text-green"></i>
+          Pagamos tu factura
+        </h3>
+        <h5>
+          viernes, 29 de mayo de 2015 17:21 UTC-3
+        </h5>
+      </div>
+    </div>
+
+    <div class="info-right">
+      <div class="content">
+        <div class="tx-details">
+          <dl>
+            <dt>Provider</dt>
+            <dd>Banco</dd>
+            <dt>Amount</dt>
+            <dd>$1247,45</dd>
+          </dl>
+        </div>
+        <div class="qrcode-container">
+          <img src="https://chart.googleapis.com/chart?chld=Q&chs=250x250&cht=qr&chl=bitcoin:1Dzs57zfwv2sc7kAnUDrAi6AL4Jp4zjVuW?amount=0.0">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

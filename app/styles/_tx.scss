@@ -1,0 +1,77 @@
+.panel {
+  background: #fff;
+  margin: 0 auto;
+  margin-top: 60px;
+  // padding: 20px;
+  position: relative;
+  width: 90%;
+
+  .tx-status {
+    background: $color-yellow;
+    color: #fff;
+    float: right;
+    font-size: 1.3em;
+    padding: 15px 40px;
+    position: absolute;
+    right: 40px;
+    top: -1.3em;
+    z-index: 999;
+  }
+}
+
+#tx-info {
+  h3 {
+    font-size: 2.5em;
+    font-weight: normal;
+    margin: 0;
+    margin-top: 25px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  h5 {
+    color: #999;
+    font-size: 1.0em;
+    font-weight: normal;
+    margin: 10px 0 0 55px;
+  }
+
+  .info-left {
+    background: #fff;
+    float: left;
+    position: relative;
+    width: 60%;
+
+    &:after {
+      border: solid transparent;
+      border-color: rgba(247, 247, 247, 0);
+      border-left-color: #fff;
+      border-width: 20px;
+      content: " ";
+      height: 0;
+      left: 100%;
+      margin-top: -20px;
+      pointer-events: none;
+      position: absolute;
+      top: 50%;
+      width: 0;
+    }
+  }
+
+  .info-right {
+    background-color: #ecf0f1;
+    display: inline-block;
+    min-height: 100px;
+    width: 40%;
+  }
+
+  .content {
+    padding: 30px;
+  }
+
+  .qrcode-container {
+    text-align: center;
+  }
+}
