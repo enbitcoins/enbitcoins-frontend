@@ -2,7 +2,6 @@
   "name": "enbitcoins-frontend",
   "version": "0.0.1",
   "description": "enBitcoins.com frontend for web app",
-  "main": "gulpfile.js",
   "scripts": {
     "test": "./node_modules/gulp/bin/gulp.js test",
     "postinstall": "./node_modules/bower/bin/bower install"
@@ -10,6 +9,9 @@
   "repository": {
     "type": "git",
     "url": "git@github.com:enbitcoins/enbitcoins-frontend.git"
+  },
+  "engines": {
+    "node": "0.12.x"
   },
   "author": "Mario Colque <colquemario@gmail.com>",
   "license": "MIT",
