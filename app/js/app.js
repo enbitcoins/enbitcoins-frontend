@@ -54,6 +54,12 @@ angular.module('enbitcoins')
       .when('/404', {
         templateUrl: 'views/404.html'
       })
+      .when('/faq', {
+        templateUrl: 'views/faq.html'
+      })
+      .when('/seguridad', {
+        templateUrl: 'views/seguridad.html'
+      })
       .when('/:addr', {
         templateUrl: 'views/tx-view.html',
         controller: 'TransactionCtrl'
