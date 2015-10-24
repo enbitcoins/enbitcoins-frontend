@@ -3,11 +3,11 @@
 angular.module('enbitcoins.services')
   .factory('Transactions', ['$resource', 'apiUrl', 'apiCountry', function($resource, apiUrl, apiCountry) {
 
-    var urlResource = apiUrl + '/ticker?country=' + apiCountry;
+    var urlResource = apiUrl + '/addrs/:addr?country=' + apiCountry;
 
     return $resource(urlResource, {},
     {
-      getLastPrice : { method: 'GET' }
+      get: { method: 'GET' }
     });
 
   }]);

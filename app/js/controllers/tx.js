@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('enbitcoins.controllers')
-  .controller('TransactionCtrl', ['$rootScope', '$scope', '$routeParams', 'notifications', 'Transactions', function($rootScope, $scope, $routeParams, notifications, Transactions) {
+  .controller('TransactionCtrl', ['$rootScope', '$scope', '$routeParams', '$location', 'notifications', 'Transactions', function($rootScope, $scope, $routeParams, $location, notifications, Transactions) {
 
     var _getFileUrl = function(billFile) {
       return 'https://files.enbitcoins.com/' + $rootScope.country.slug + '/' + billFile;
@@ -48,8 +48,9 @@ angular.module('enbitcoins.controllers')
             }
           }
         }, function(error) {
-          console.log('error:', error);
-          notifications.error('Error al buscar esta transacción.');
+          if (error.data.code === 404) {
+            $location.path('404');
+          }
         });
     };
 
