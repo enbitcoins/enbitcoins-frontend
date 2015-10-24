@@ -3,10 +3,10 @@
 angular.module('enbitcoins.controllers')
   .controller('HomeCtrl', ['$rootScope', '$scope', '$location', '$http', 'notifications', 'apiUrl', 'apiCountry', function($rootScope, $scope, $location, $http, notifications, apiUrl, apiCountry) {
 
-    $scope.company = {};
-    $scope.companies = [];
-
     $scope.init = function() {
+      $scope.company = {};
+      $scope.companies = [];
+      $scope.step = 1;
     };
 
     $scope.refreshCompanies = function(company) {

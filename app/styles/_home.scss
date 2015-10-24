@@ -1,0 +1,11 @@
+
+.payment-steps {
+  span {
+    font-weight: 700;
+    opacity: .6;
+
+    &.active {
+      opacity: 1;
+    }
+  }
+}
