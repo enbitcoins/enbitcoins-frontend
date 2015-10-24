@@ -1,3 +1,14 @@
-<div id="home" ng-init="init()">
-  hola
+<div id="home" class="container" ng-init="init()">
+  <ui-select ng-model="company.selected" theme="bootstrap" ng-disabled="disabled" reset-search-input="false" style="width: 300px;">
+    <ui-select-match placeholder="Empresa...">
+      {{$select.selected.name}}
+    </ui-select-match>
+    <ui-select-choices repeat="company in companies" refresh="refreshCompanies($select.search)" refresh-delay="0">
+      <div ng-bind-html="company.name | highlight: $select.search"></div>
+    </ui-select-choices>
+  </ui-select>
+
+
+
+<div class="btn btn-primary btn-upload" upload-button url="https://api.enbitcoins.com/v1/upload?country={{$root.country.slug}}" param="files" data="formData" required="true" on-upload="onUpload(files)" on-success="onSuccess(response)" on-error="onError(response)" on-complete="onComplete(response)">Fileupload</div>
 </div>

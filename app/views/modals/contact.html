@@ -6,6 +6,12 @@
 
 <form ng-submit="submit()" name="form">
   <div class="modal-body">
+
+    <div class="form-group" ng-if="addr">
+      <label for="addr">Dirección</label>
+      {{addr}}
+    </div>
+
     <div class="form-group">
       <label for="email">Email</label>
       <input type="email" name="email" class="form-control" placeholder="Email" ng-disabled="sending" required>

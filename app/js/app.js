@@ -3,11 +3,14 @@
 angular.module('enbitcoins', [
   'ngRoute',
   'ngResource',
+  'ngSanitize',
+  'ngClipboard',
 
+  'angular-growl',
   'ui.bootstrap',
   'ui.bootstrap.tpls',
-  'angular-growl',
-  'ngClipboard',
+  'ui.select',
+  'lr.upload',
 
   'templates',
 
