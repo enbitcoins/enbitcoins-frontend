@@ -6,6 +6,8 @@ angular.module('enbitcoins.controllers')
     $scope.init = function() {
       $scope.company = {};
       $scope.companies = [];
+      $scope.payment = {};
+      $scope.uploadLoading = false;
       $scope.step = 1;
     };
 
@@ -23,20 +25,25 @@ angular.module('enbitcoins.controllers')
       });
     };
 
-    $scope.onUpload = function(files) {
-      console.log('onUpload', files);
+    $scope.setStep = function(step) {
+      $scope.step = step;
+    };
+
+    $scope.onUpload = function() {
+      $scope.uploadLoading = true;
     };
 
     $scope.onSuccess = function(response) {
-      console.log('onSuccess', response);
+      $scope.step = 2;
+      $scope.payment.file = response.data.file;
     };
 
     $scope.onError = function(response) {
-      console.log('onError', response);
+      notifications.error('Error al subir el archivo.');
     };
 
     $scope.onComplete = function(response) {
-      console.log('onComplete', response);
+      $scope.uploadLoading = false;
     };
 
   }]);
