@@ -1,1 +1,178 @@
-<h1>tx view</h1>
+<div class="container tx-panel" ng-class="{'tx-pending': (tx.status === 'waitingForBitcoins' || tx.status === 'waitingForConfirmations' || tx.status === 'waitingForProvision'), 'tx-success': tx.status === 'provisioned', 'tx-error': tx.status === 'cancelled'}" ng-init="init()">
+  <div class="tx-status">
+    <span ng-if="tx.status === 'waitingForBitcoins' || tx.status === 'waitingForConfirmations' || tx.status === 'waitingForProvision'">Pendiente</span>
+    <span ng-if="tx.status === 'provisioned'">Éxito</span>
+    <span ng-if="tx.status === 'cancelled'">Cancelada</span>
+  </div>
+
+  <div id="tx-info" class="row">
+    <div class="col-md-7 info-left">
+      <div class="content">
+
+        <div class="step" ng-if="tx.status === 'cancelled'">
+          <h3>
+            <span class="step-icon">
+              <i class="fa fa-times text-red"></i>
+            </span>
+            <span>
+              Operación cancelada.
+            </span>
+          </h3>
+          <h5>
+            {{tx.cancelled_date | date:'medium'}}
+            <!-- viernes, 29 de mayo de 2015 17:21 UTC-3 -->
+          </h5>
+          <div class="alert alert-danger">
+            La transacción ha sido cancelada. Ha expirado el tiempo de espera.
+          </div>
+        </div>
+
+        <div class="step" ng-if="step === 0 && tx.status !== 'cancelled'">
+          <h3>
+            <span class="step-icon">
+              <i class="fa fa-refresh fa-spin text-yellow"></i>
+            </span>
+            <span>
+              Esperando tu pago
+            </span>
+          </h3>
+          <h5>
+            {{tx.created_date | date:'medium'}}
+          </h5>
+          <div class="alert alert-info">
+            Una vez realizada la transacción, se esperará la confirmación de la misma.
+          </div>
+        </div>
+
+        <div class="step" ng-if="step > 0">
+          <h3>
+            <span class="step-icon">
+              <i class="fa fa-check text-green"></i>
+            </span>
+            <span>
+              Recibimos tu pago
+            </span>
+          </h3>
+          <h5>
+            {{tx.paid_date | date:'medium'}}
+          </h5>
+        </div>
+
+        <div class="step" ng-if="step === 1">
+          <h3>
+            <span class="step-icon">
+              <i class="fa fa-refresh fa-spin text-yellow"></i>
+            </span>
+            <span>
+              Esperando confirmaciones ({{tx.confirmations}}/{{$root.country.confirmations}})
+            </span>
+          </h3>
+        </div>
+
+        <div class="step" ng-if="step > 1">
+          <h3>
+            <span class="step-icon">
+              <i class="fa fa-check text-green"></i>
+            </span>
+            <span>
+              Transacción confirmada
+            </span>
+          </h3>
+          <h5>
+            {{tx.confirmations_date | date:'medium'}}
+          </h5>
+        </div>
+
+        <div class="step" ng-if="step === 2">
+          <h3>
+            <span class="step-icon">
+              <i class="fa fa-refresh fa-spin text-yellow"></i>
+            </span>
+            <span>
+              Pagando factura
+            </span>
+          </h3>
+          <h5>
+            En unos momentos tu factura será pagada.
+          </h5>
+        </div>
+
+        <div class="step" ng-if="step > 2">
+          <h3>
+            <span class="step-icon">
+              <i class="fa fa-check text-green"></i>
+            </span>
+            <span>
+              Pagamos tu factura
+            </span>
+          </h3>
+          <h5>
+            {{tx.provisioning_date | date:'medium'}}
+          </h5>
+        </div>
+
+        <div class="step" ng-if="step > 2">
+          <h3>
+            <span class="step-icon">
+              <i class="fa fa-arrow-down text-green"></i>
+            </span>
+            <span>
+              Descarga el comprobante
+            </span>
+          </h3>
+          <h5>
+            Puedes descargar el comprobante ahora o guardar esta dirección para futuras consultas.
+          </h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-5 info-right">
+      <div class="content">
+        <div class="tx-details">
+          <ul class="list-group">
+            <li class="list-group-item" ng-if="tx.company">
+              <span class="pull-right">
+                {{tx.bill_company.name}}
+              </span>
+              <strong>Empresa</strong>
+            </li>
+            <li class="list-group-item" ng-if="tx.fileUrl">
+              <a ng-href="tx.fileUrl" class="pull-right" target="_blank">
+                Ver Archivo
+              </a>
+              <strong>Archivo</strong>
+            </li>
+            <li class="list-group-item">
+              <span class="pull-right">
+                {{tx.bill_amount}}
+              </span>
+              <strong>Importe</strong>
+            </li>
+            <li class="list-group-item">
+              <span class="pull-right">
+                {{tx.convertion_rate}}
+              </span>
+              <strong>ARS/BTC</strong>
+            </li>
+            <li class="list-group-item">
+              <a href="" class="pull-right" clip-copy="'{{tx.addr}}'" clip-click="copyAddr()">
+                <!-- 1FdBScnW6icdqHWrgBebHgX1tr2rrfjkck -->
+                {{tx.addr}}
+              </a>
+              <strong>Dirección</strong>
+            </li>
+            <li class="list-group-item">
+              <span class="pull-right">{{tx.due_amount_satoshis | toBitcoins}} BTC</span>
+              <strong>Total</strong>
+            </li>
+          </ul>
+        </div>
+
+        <div class="qrcode-container">
+          <img ng-src="https://chart.googleapis.com/chart?chld=Q&chs=250x250&cht=qr&chl=bitcoin:{{tx.addr}}?amount={{tx.due_amount_satoshis | toBitcoins}}" class="img-responsive center-block img-thumbnail">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

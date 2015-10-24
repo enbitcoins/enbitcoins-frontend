@@ -17,11 +17,11 @@
     <meta property="og:image" content="https://enbitcoins.com/img/og.png">
     <meta property="og:type" content="website">
 
-    <title>enBitcoins.com</title>
+    <title>enBitcoins</title>
 
     <link rel="icon" type="image/png" href="/img/favicon.png">
 
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,600italic,600,300">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,700">
 
     <!-- build:css({.tmp,app}) /css/vendor.css -->
     <!-- bower:css -->
@@ -34,39 +34,34 @@
     <!-- endbuild -->
 
     <!-- build:css({.tmp,app}) /css/app.css -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
     <!-- endbuild -->
   </head>
   <body ng-cloak class="ng-cloak">
-    <nav id="navbar">
+    <div growl></div>
+
+    <nav id="navbar" ng-controller="NavbarCtrl" ng-init="init()">
       <div class="pull-right">
-        <a class="navbar-link-circle" href="#">
-          <i class="fa fa-lock"></i>
-        </a>
-
-        <a class="navbar-link-circle" href="#">
-          <i class="fa fa-info"></i>
-        </a>
-
-        <a class="navbar-link-circle" href="https://facebook.com/enbitcoins" target="_blank" title="enBitcoins on Facebook">
-          <i class="fa fa-facebook"></i>
-        </a>
-
-        <a class="navbar-link-circle" href="https://twitter.com/enbitcoins" target="_blank" title="enBitcoins on Twitter">
-          <i class="fa fa-twitter"></i>
-        </a>
-
-        <a class="navbar-link-circle" href="https://github.com/enbitcoins" target="_blank" title="enBitcoins on GitHub">
-          <i class="fa fa-github-alt"></i>
-        </a>
-
-        <div class="price-box up">
-          <span class="price-value">$2834</span>
-          <span class="price-status">
-            <i class="fa fa-caret-up"></i>
-            <i class="fa fa-caret-down"></i>
-          </span>
-        </div>
+        <ul class="nav nav-pills">
+          <li>
+            <a href="/seguridad">Seguridad</a>
+          </li>
+          <li>
+            <a href="/faq">FAQ</a>
+          </li>
+          <li>
+            <a href="" ng-click="contactModal()">Contacto</a>
+          </li>
+          <li>
+            <div class="price-box up">
+              <span class="price-value">{{priceTxt || '---'}}</span>
+              <span class="price-status">
+                <i class="fa fa-caret-up" ng-if="lastPrice.direction === 'up'"></i>
+                <i class="fa fa-caret-down" ng-if="lastPrice.direction === 'down'"></i>
+              </span>
+            </div>
+          </li>
+        </ul>
       </div>
 
       <a href="/" class="navbar-link">
@@ -81,6 +76,15 @@
     <script src="../bower_components/angular/angular.js"></script>
     <script src="../bower_components/angular-resource/angular-resource.js"></script>
     <script src="../bower_components/angular-route/angular-route.js"></script>
+
+    <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="../bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+
+    <script src="../bower_components/angular-growl/build/angular-growl.js"></script>
+
+    <script src="../bower_components/ng-clip/dest/ng-clip.min.js"></script>
+    <script src="../bower_components/zeroclipboard/dist/ZeroClipboard.js"></script>
+
     <script src="../bower_components/moment/moment.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
@@ -88,12 +92,16 @@
     <!-- build:js({.tmp,app}) /js/app.js -->
     <script src="js/app.js"></script>
 
+    <script src="js/controllers/contact-modal.js"></script>
     <script src="js/controllers/home.js"></script>
     <script src="js/controllers/navbar.js"></script>
     <script src="js/controllers/tx.js"></script>
 
+    <script src="js/factories/notifications.js"></script>
+
     <script src="js/filters/to-bitcoins.js"></script>
 
+    <script src="js/services/country.js"></script>
     <script src="js/services/ticker.js"></script>
     <script src="js/services/transactions.js"></script>
     <!-- endbuild -->

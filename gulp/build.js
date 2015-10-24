@@ -62,11 +62,11 @@ gulp.task('scripts', function() {
 gulp.task('partials', function() {
   return gulp.src('app/views/**/*.html')
     .pipe($.minifyHtml(minifyHtmlOptions))
+    .pipe($.angularHtmlify())
     .pipe($.angularTemplatecache({
       root: 'views',
       standalone: true
     }))
-    .pipe($.angularHtmlify())
     .pipe(gulp.dest('.tmp'))
     .pipe($.size());
 });
@@ -105,10 +105,16 @@ gulp.task('images', function() {
 });
 
 gulp.task('fonts', function() {
-  return gulp.src($.mainBowerFiles())
-    .pipe($.filter('**/*.{eot,svg,ttf,woff,woff2}'))
+  return gulp.src(['bower_components/font-awesome/fonts/*'])
     .pipe($.flatten())
     .pipe(gulp.dest(destAssets.fonts))
+    .pipe($.size());
+});
+
+gulp.task('misc', function() {
+  return gulp.src($.mainBowerFiles())
+    .pipe($.filter('**/*.swf'))
+    .pipe(gulp.dest('public/lib'))
     .pipe($.size());
 });
 
@@ -116,4 +122,4 @@ gulp.task('clean', function(cb) {
   $.del(['.tmp', 'public'], cb);
 });
 
-gulp.task('build', ['html', 'fonts', 'images']);
+gulp.task('build', ['html', 'fonts', 'images', 'misc']);

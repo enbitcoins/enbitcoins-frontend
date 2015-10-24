@@ -20,21 +20,23 @@ body {
   display: none !important;
 }
 
-[ng-click] {
+// Angular Bootstrap
+[ng-click],
+.nav,
+.pagination,
+.carousel,
+.panel-title a {
   cursor: pointer;
 }
+
+.modal-dialog {
+  margin-top: 75px;
+}
+
 
 // General
 * {
   outline: none !important;
-}
-
-.pull-rigth {
-  float: right;
-}
-
-.pull-left {
-  float: left;
 }
 
 .text-green {
@@ -49,52 +51,48 @@ body {
   color: $color-red;
 }
 
-.hide {
-  display: none;
-}
-
 #navbar {
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,.15);
   height: 60px;
   left: 0;
   padding: 0 20px;
   position: fixed;
   right: 0;
-  z-index: 99999999;
+  z-index: 999;
 
   .navbar-link {
     display: block;
-
-    img {
-      height: 60px;
-    }
+    margin-top: 15px;
   }
 
-  .navbar-link-circle {
-    border: 2px solid #fff;
-    border-radius: 23px;
-    color: #fff;
-    display: inline-block;
-    font-size: 24px;
-    margin-right: 15px;
-    margin-top: 6px;
-    padding: 5px;
-    text-align: center;
-    width: 33px;
-    opacity: .7;
-    transition: opacity .2s ease-in;
+  .nav-pills {
+    &> li {
+      margin-left: 25px !important;
+      margin-top: 15px;
 
-    &:hover {
-      opacity: 1;
+      &> a {
+        border-radius: 4px;
+        color: #404B55;
+        font-size: 15px;
+        font-weight: 700;
+        opacity: .8;
+        padding: 5px 10px;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
     }
   }
 
   .price-box {
+    border-radius: 4px;
     color: #fff;
     display: inline-block;
     float: right;
-    margin-left: 10px;
-    margin-top: 9px;
-    padding: 10px 20px;
+    margin-top: -4px;
+    padding: 8px 20px;
 
     &.up {
       background: $color-green;
@@ -107,6 +105,9 @@ body {
 
   .price-value {
     color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, .5);
   }
 }
 
@@ -115,8 +116,17 @@ body {
   background-size: cover;
   bottom: 0;
   left: 0;
-  padding-top: 75px;
+  padding-top: 60px;
   position: absolute;
   right: 0;
   top: 0;
+}
+
+// Growl
+.growl {
+  z-index: 10000;
+}
+.growl-item.ng-enter,
+.growl-item.ng-leave {
+  transition: 1s linear all;
 }
