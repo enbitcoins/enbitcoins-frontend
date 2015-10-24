@@ -29,7 +29,7 @@
         </ui-select-choices>
       </ui-select>
 
-      <div class="btn btn-primary btn-upload" upload-button url="https://api.enbitcoins.com/v1/upload?country={{$root.country.slug}}" param="files" data="formData" required="true" on-upload="onUpload(files)" on-success="onSuccess(response)" on-error="onError(response)" on-complete="onComplete(response)">Fileupload</div>
+      <div class="btn btn-primary btn-upload" upload-button url="https://api.enbitcoins.com/v1/upload?country={{$root.country.slug}}" param="file" data="formData" required="true" on-upload="onUpload(files)" on-success="onSuccess(response)" on-error="onError(response)" on-complete="onComplete(response)">Fileupload</div>
     </div>
     <div class="col-md-4" ng-if="step === 2">
       Step 2
