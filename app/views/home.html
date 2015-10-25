@@ -1,8 +1,15 @@
 <div id="home" class="container" ng-init="init()">
 
   <div class="row text-center payment-steps">
+    <div class="col-md-12">
+      <h1>
+        ¡Pagá de todo <strong>enBitcoins</strong>!
+      </h1>
+      <hr>
+    </div>
+
     <div class="col-md-4 step-tab" ng-class="{active: step === 1}" ng-click="setStep(1)">
-      <span class="text-blue">
+      <span class="text-violet">
         1. Empresa
       </span>
     </div>
@@ -22,7 +29,7 @@
     <div ng-if="step === 1">
       <div ng-if="!uploadLoading">
         <div class="col-md-6 text-center">
-          <ui-select ng-model="company.selected" theme="bootstrap" ng-disabled="disabled" reset-search-input="false" style="width: 300px;">
+          <ui-select ng-model="company.selected" theme="bootstrap" ng-disabled="disabled" reset-search-input="false">
             <ui-select-match placeholder="Buscar empresa...">
               {{$select.selected.name}}
             </ui-select-match>
@@ -33,7 +40,7 @@
         </div>
 
         <div class="col-md-6 text-center">
-          <div class="btn btn-primary btn-block btn-upload" upload-button url="https://api.enbitcoins.com/v1/upload?country={{$root.country.slug}}" param="file" data="formData" required="true" on-upload="onUpload(files)" on-success="onSuccess(response)" on-error="onError(response)" on-complete="onComplete(response)">Subir un archivo...</div>
+          <div class="btn btn-success btn-lg btn-block btn-upload" upload-button url="https://api.enbitcoins.com/v1/upload?country={{$root.country.slug}}" param="file" data="formData" accept="image/*,application/pdf" required="true" on-upload="onUpload(files)" on-success="onSuccess(response)" on-error="onError(response)" on-complete="onComplete(response)">Subir un archivo...</div>
         </div>
       </div>
 
@@ -47,11 +54,11 @@
     </div>
 
     <div class="col-md-12" ng-if="step === 2">
-      Step 2
+
     </div>
 
     <div class="col-md-12" ng-if="step === 3">
-      Step 3
+
     </div>
   </div>
 </div>
