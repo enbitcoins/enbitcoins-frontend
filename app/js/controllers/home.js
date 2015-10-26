@@ -1,11 +1,22 @@
 'use strict';
 
 angular.module('enbitcoins.controllers')
-  .controller('HomeCtrl', ['$rootScope', '$scope', '$location', '$http', 'notifications', 'apiUrl', 'apiCountry', function($rootScope, $scope, $location, $http, notifications, apiUrl, apiCountry) {
+  .controller('HomeCtrl', ['$rootScope', '$scope', '$timeout', '$http', 'notifications', 'apiUrl', 'apiCountry', function($rootScope, $scope, $timeout, $http, notifications, apiUrl, apiCountry) {
+
+    $scope.$watch('company.selected', function(newVal, oldVal) {
+      if (oldVal !== newVal) {
+        $scope.payment.company = newVal._id;
+        $scope.step = 2;
+
+        $timeout(function() {
+          document.getElementById('amount').focus();
+        });
+      }
+    });
 
     $scope.init = function() {
-      $scope.company = {};
       $scope.companies = [];
+      $scope.company = {};
       $scope.payment = {};
       $scope.uploadLoading = false;
       $scope.step = 1;
@@ -21,6 +32,17 @@ angular.module('enbitcoins.controllers')
         .get(apiUrl + '/companies', { params: params })
         .then(function(response) {
           $scope.companies = response.data;
+        });
+    };
+
+    $scope.confirm = function() {
+      $scope.sending = true;
+
+      var paymentUrl = apiUrl + '/payments?country=' + $rootScope.country.slug;
+      $http
+        .post(paymentUrl, $scope.payment)
+        .then(function(response) {
+          console.log('response', response);
         });
     };
 
