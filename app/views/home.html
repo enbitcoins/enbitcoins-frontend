@@ -2,7 +2,7 @@
 
   <div class="row text-center">
     <h1>
-      ¡Pagá <span class="text-yellow" typewrite text="['tus servicios','tus recargas','tus transportes', 'de todo']"></span> <strong>enBitcoins</strong>!
+      ¡Pagá <span class="text-red" typewrite text="['tus servicios', 'tus tarjetas', 'de todo']"></span> <strong>enBitcoins</strong>!
     </h1>
   </div>
 
@@ -19,11 +19,11 @@
       </span>
     </div>
 
-    <div ng-if="step === 1">
+    <div id="step1" ng-if="step === 1">
       <div ng-if="!uploadLoading">
         <div class="col-md-5 col-md-offset-1 text-center">
           <ui-select ng-model="company.selected" theme="bootstrap" ng-disabled="disabled" reset-search-input="false">
-            <ui-select-match placeholder="Buscar empresa...">
+            <ui-select-match placeholder="Buscar una empresa...">
               {{$select.selected.name}}
             </ui-select-match>
             <ui-select-choices repeat="company in companies" refresh="refreshCompanies($select.search)" refresh-delay="0">
@@ -34,6 +34,10 @@
 
         <div class="col-md-5 text-center">
           <div class="btn btn-success btn-lg btn-block btn-upload" upload-button url="https://api.enbitcoins.com/v1/upload?country={{$root.country.slug}}" param="file" data="formData" accept="image/*,application/pdf" required="true" on-upload="onUpload(files)" on-success="onSuccess(response)" on-error="onError(response)" on-complete="onComplete(response)">Subir un archivo...</div>
+        </div>
+
+        <div class="col-md-12 text-center help-text">
+          <p>Selecciona una empresa de la lista ó sube una factura electrónica.</p>
         </div>
       </div>
 
@@ -46,7 +50,7 @@
       </div>
     </div>
 
-    <div ng-if="step === 2">
+    <div id="step2" ng-if="step === 2">
       <form>
         <div class="col-md-5 col-md-offset-1">
           <div class="form-group">
@@ -84,6 +88,12 @@
               <input type="number" class="form-control input-lg" ng-model="payment.pin">
             </div>
           </div>
+        </div>
+
+        <div class="col-md-10 col-md-offset-1">
+          <button class="btn btn-lg btn-success btn-block">
+            Confirmar
+          </button>
         </div>
       </form>
     </div>

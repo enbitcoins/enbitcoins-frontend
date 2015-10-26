@@ -17,12 +17,11 @@ angular.module('enbitcoins.controllers')
         country: apiCountry
       };
 
-      return $http.get(
-        apiUrl + '/companies',
-        { params: params }
-      ).then(function(response) {
-        $scope.companies = response.data;
-      });
+      $http
+        .get(apiUrl + '/companies', { params: params })
+        .then(function(response) {
+          $scope.companies = response.data;
+        });
     };
 
     $scope.setStep = function(step) {

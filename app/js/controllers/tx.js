@@ -48,9 +48,10 @@ angular.module('enbitcoins.controllers')
             }
           }
         }, function(error) {
-          if (error.data.code === 404) {
-            $location.path('404');
-          }
+          console.log(error);
+          // if (error.data.code === 404) {
+          //   $location.path('404');
+          // }
         });
     };
 
