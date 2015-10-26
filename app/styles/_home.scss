@@ -90,3 +90,13 @@
     margin: 60px auto 30px auto;
   }
 }
+
+@media (max-width: 768px) {
+  #home {
+    .step1 {
+      .col-md-5 {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
