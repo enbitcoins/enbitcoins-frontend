@@ -48,10 +48,9 @@ angular.module('enbitcoins.controllers')
             }
           }
         }, function(error) {
-          console.log(error);
-          // if (error.data.code === 404) {
-          //   $location.path('404');
-          // }
+          if (error.data.code === 404) {
+            $location.path('404');
+          }
         });
     };
 
@@ -65,7 +64,7 @@ angular.module('enbitcoins.controllers')
           $scope.transaction = response;
           $rootScope.loading = false;
         }, function() {
-          notifications.error('Error getting transaction data.');
+          notifications.error('Error al obtener esta transacción.');
           $rootScope.loading = false;
         });
     };

@@ -6,11 +6,7 @@ angular.module('enbitcoins.controllers')
     $scope.$watch('company.selected', function(newVal, oldVal) {
       if (oldVal !== newVal) {
         $scope.payment.company = newVal._id;
-        $scope.step = 2;
-
-        $timeout(function() {
-          document.getElementById('amount').focus();
-        });
+        $scope.setStep(2);
       }
     });
 
@@ -53,6 +49,12 @@ angular.module('enbitcoins.controllers')
 
     $scope.setStep = function(step) {
       $scope.step = step;
+
+      if (step === 2) {
+        $timeout(function() {
+          document.getElementById('amount').focus();
+        });
+      }
     };
 
     $scope.onUpload = function() {
@@ -60,7 +62,7 @@ angular.module('enbitcoins.controllers')
     };
 
     $scope.onSuccess = function(response) {
-      $scope.step = 2;
+      $scope.setStep(2);
       $scope.payment.file = response.data.file;
     };
 
