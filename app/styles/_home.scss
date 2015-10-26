@@ -92,11 +92,9 @@
 }
 
 @media (max-width: 768px) {
-  #home {
-    .step1 {
-      .col-md-5 {
-        margin-bottom: 10px;
-      }
+  #step1 {
+    .col-md-5 {
+      margin-bottom: 10px;
     }
   }
 }
