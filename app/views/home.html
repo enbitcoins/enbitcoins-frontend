@@ -1,34 +1,27 @@
 <div id="home" class="container" ng-init="init()">
 
-  <div class="row text-center payment-steps">
-    <div class="col-md-12">
-      <h1>
-        ¡Pagá de todo <strong>enBitcoins</strong>!
-      </h1>
-      <hr>
-    </div>
+  <div class="row text-center">
+    <h1>
+      ¡Pagá <span class="text-yellow" typewrite text="['tus servicios','tus recargas','tus transportes', 'de todo']"></span> <strong>enBitcoins</strong>!
+    </h1>
+  </div>
 
-    <div class="col-md-4 step-tab" ng-class="{active: step === 1}" ng-click="setStep(1)">
-      <span class="text-violet">
+  <div class="row payment-steps">
+    <div class="col-md-5 col-md-offset-1 step-tab" ng-class="{active: step === 1}" ng-click="setStep(1)">
+      <span class="text-blue">
         1. Empresa
       </span>
     </div>
-    <div class="col-md-4 step-tab" ng-class="{active: step === 2}" ng-click="setStep(2)">
-      <span class="text-yellow">
+
+    <div class="col-md-5 step-tab" ng-class="{active: step === 2}" ng-click="setStep(2)">
+      <span class="text-violet">
         2. Detalles
       </span>
     </div>
-    <div class="col-md-4 step-tab" ng-class="{active: step === 3}" ng-click="setStep(3)">
-      <span class="text-green">
-        3. Confirmar Pago
-      </span>
-    </div>
-  </div>
 
-  <div class="row">
     <div ng-if="step === 1">
       <div ng-if="!uploadLoading">
-        <div class="col-md-6 text-center">
+        <div class="col-md-5 col-md-offset-1 text-center">
           <ui-select ng-model="company.selected" theme="bootstrap" ng-disabled="disabled" reset-search-input="false">
             <ui-select-match placeholder="Buscar empresa...">
               {{$select.selected.name}}
@@ -39,12 +32,12 @@
           </ui-select>
         </div>
 
-        <div class="col-md-6 text-center">
+        <div class="col-md-5 text-center">
           <div class="btn btn-success btn-lg btn-block btn-upload" upload-button url="https://api.enbitcoins.com/v1/upload?country={{$root.country.slug}}" param="file" data="formData" accept="image/*,application/pdf" required="true" on-upload="onUpload(files)" on-success="onSuccess(response)" on-error="onError(response)" on-complete="onComplete(response)">Subir un archivo...</div>
         </div>
       </div>
 
-      <div class="col-md-12" ng-if="uploadLoading">
+      <div class="col-md-10 col-md-offset-1" ng-if="uploadLoading">
         <div class="progress">
           <div class="progress-bar progress-bar-success progress-bar-striped active" style="width: 100%;">
             Subiendo archivo...
@@ -53,12 +46,46 @@
       </div>
     </div>
 
-    <div class="col-md-12" ng-if="step === 2">
+    <div ng-if="step === 2">
+      <form>
+        <div class="col-md-5 col-md-offset-1">
+          <div class="form-group">
+            <label for="amount">Monto</label>
+            <div class="input-group">
+              <span class="input-group-addon">$</span>
+              <input type="number" class="form-control input-lg" ng-model="payment.amount">
+            </div>
+          </div>
 
-    </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <div class="input-group">
+              <span class="input-group-addon">@</span>
+              <input type="email" class="form-control input-lg" ng-model="payment.email">
+            </div>
+          </div>
+        </div>
 
-    <div class="col-md-12" ng-if="step === 3">
+        <div class="col-md-5">
+          <div class="form-group">
+            <label for="code">Código</label>
+            <div class="input-group">
+              <span class="input-group-addon">#</span>
+              <input type="text" class="form-control input-lg" ng-model="payment.code">
+            </div>
+          </div>
 
+          <div class="form-group">
+            <label for="pin">PIN</label>
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="fa fa-lock"></i>
+              </span>
+              <input type="number" class="form-control input-lg" ng-model="payment.pin">
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </div>

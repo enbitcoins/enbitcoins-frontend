@@ -6,6 +6,7 @@ angular.module('enbitcoins', [
   'ngSanitize',
   'ngClipboard',
 
+  'angularTypewrite',
   'angular-growl',
   'ui.bootstrap',
   'ui.bootstrap.tpls',

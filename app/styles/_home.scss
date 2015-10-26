@@ -27,30 +27,28 @@
   }
 
   .payment-steps {
+    background: #fff;
+    border-top: 1px solid #d4d4d4;
+    border-bottom: 1px solid #d4d4d4;
+    margin: 0;
+
     .step-tab {
       border-radius: 4px;
       font-weight: 700;
       margin-bottom: 40px;
       margin-top: 15px;
       padding: 5px 10px;
+      text-align: center;
 
       &.active {
         background-color: #eee;
         text-decoration: none;
-
-        span {
-          opacity: 1;
-        }
       }
 
       &:hover {
         background-color: #efefef;
         cursor: pointer;
       }
-    }
-
-    span {
-      opacity: .6;
     }
   }
 
