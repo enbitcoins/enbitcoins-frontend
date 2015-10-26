@@ -9,12 +9,17 @@ angular.module('enbitcoins.controllers')
 
     $scope.init = function() {
       $scope.step = 0;
+      $scope.isPrivate = false;
 
       Transactions
         .get({
           addr: $routeParams.addr
         }, function(response) {
+          $scope.isPrivate = true;
+
           if ( ! response.private) {
+            $scope.isPrivate = false;
+
             switch (response.status) {
             case 'waitingForBitcoins':
               $scope.step = 0;
@@ -48,24 +53,25 @@ angular.module('enbitcoins.controllers')
             }
           }
         }, function(error) {
-          if (error.data.code === 404) {
-            $location.path('404');
-          }
+          // if (error.data.code === 404) {
+          //   $location.path('404');
+          // }
         });
     };
 
     $scope.validatePin = function() {
-      $rootScope.loading = true;
+      $scope.sending = true;
 
       Transactions
-        .validate({
-          pin: $scope.pin
+        .validatePin({
+          pin: $scope.pin,
+          addr: $routeParams.addr
         }, function(response) {
           $scope.transaction = response;
-          $rootScope.loading = false;
+          $scope.sending = false;
         }, function() {
           notifications.error('Error al obtener esta transacción.');
-          $rootScope.loading = false;
+          $scope.sending = false;
         });
     };
 

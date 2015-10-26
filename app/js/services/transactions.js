@@ -7,7 +7,8 @@ angular.module('enbitcoins.services')
 
     return $resource(urlResource, {},
     {
-      get: { method: 'GET' }
+      get: { method: 'GET' },
+      validatePin: { method: 'POST' }
     });
 
   }]);
