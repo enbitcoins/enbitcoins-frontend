@@ -52,7 +52,7 @@
 
     <div id="step2" ng-if="step === 2">
       <form name="paymentForm" ng-submit="confirm()">
-        <div class="row">
+        <div>
           <div class="form-group col-md-5 col-md-offset-1 col-xs-12">
             <label for="amount">Monto</label>
             <div class="input-group">
@@ -72,7 +72,7 @@
           </div>
         </div>
 
-        <div class="row">
+        <div>
           <div class="form-group col-md-5 col-xs-12">
             <label for="email">
               Email <small class="text-muted">(opcional)</small>
@@ -97,7 +97,7 @@
           </div>
         </div>
 
-        <div class="col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
+        <div class="col-md-10 col-md-offset-1 col-xs-12">
           <button type="submit" class="btn btn-lg btn-success btn-block" ng-disabled="paymentForm.$invalid || sending">
             Confirmar
           </button>
