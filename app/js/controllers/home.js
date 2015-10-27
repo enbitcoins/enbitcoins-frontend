@@ -42,12 +42,10 @@ angular.module('enbitcoins.controllers')
 
       Payments
         .create($scope.payment, function(response) {
-          console.log('confirm', response);
-
           $rootScope.paymentPin = $scope.payment.pin;
           $scope.sending = false;
 
-          $location.path(response.data.addr);
+          $location.path(response.addr);
         }, function(error) {
           console.log('error', error);
           // notifications.error(error.data.message);
