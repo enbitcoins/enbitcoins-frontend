@@ -22,6 +22,21 @@
     width: 97%;
   }
 
+  .dropdown-menu {
+    right: 15px;
+
+    &>.active {
+      &>a {
+        background-color: $color-green;
+
+        &:hover,
+        &:focus {
+          background-color: $color-green;
+        }
+      }
+    }
+  }
+
   .progress {
     font-size: 15px;
     font-weight: 700;
