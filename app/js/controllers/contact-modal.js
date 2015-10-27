@@ -16,6 +16,10 @@ angular.module('enbitcoins.controllers')
         })
         .success(function() {
           $scope.sending = false;
+          $scope.msg = null;
+          $scope.email = null;
+
+          $modalInstance.dismiss('close');
           notifications.success('Mensaje enviado correctamente.');
         })
         .error(function() {
