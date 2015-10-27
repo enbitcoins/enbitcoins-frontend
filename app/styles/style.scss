@@ -71,6 +71,13 @@ body {
 .btn-success {
   background-color: $color-green;
   border-color: $color-green;
+
+  &:hover,
+  &.active,
+  &[disabled] {
+    background-color: $color-green-hover;
+    border-color: $color-green-hover;
+  }
 }
 
 #navbar {
