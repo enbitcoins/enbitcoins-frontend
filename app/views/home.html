@@ -2,7 +2,7 @@
 
   <div class="row text-center">
     <h1>
-      ¡Paga <span class="text-orange" typewrite text="['tus servicios', 'tus tarjetas', 'de todo']"></span> <strong>enBitcoins</strong>!
+      ¡Paga <span class="text-orange" typewrite text="['tus servicios', 'tus tarjetas', 'tus recargas', 'de todo']"></span> <strong>enBitcoins</strong>!
     </h1>
   </div>
 
@@ -18,6 +18,7 @@
     <div id="step1" ng-if="step === 1">
       <div ng-if="!uploadLoading">
         <div class="col-md-5 col-md-offset-1 text-center">
+          =={{companySelected}}==
           <input type="text" ng-model="companySelected" placeholder="Buscar una empresa" typeahead="comp as comp.name for item in getCompanies($viewValue)" typeahead-loading="loadingCompanies" typeahead-no-results="noResults" typeahead-min-length="2" typeahead-on-select="selectCompany($item)" class="form-control input-lg">
           <i ng-show="loadingCompanies" class="fa fa-refresh fa-spin text-blue"></i>
           <div class="no-results text-red" ng-show="noResults">
