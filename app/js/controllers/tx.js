@@ -37,6 +37,7 @@ angular.module('enbitcoins.controllers')
 
     $scope.init = function() {
       $scope.step = 0;
+      $scope.ready = false;
 
       if ($rootScope.paymentPin) {
         $scope.validatePin();
@@ -48,6 +49,7 @@ angular.module('enbitcoins.controllers')
             addr: $routeParams.addr
           }, function(response) {
             $scope.isPrivate = true;
+            $scope.ready = true;
 
             if ( ! response.private) {
               $scope.isPrivate = false;
@@ -73,11 +75,9 @@ angular.module('enbitcoins.controllers')
     $scope.validatePin = function() {
       $scope.sending = true;
 
-      console.log('validatePin', $scope.paymentPin, $rootScope.paymentPin, $routeParams.addr);
-
       Transactions
         .validatePin({
-          pin: $scope.paymentPin || $rootScope.paymentPin,
+          pin: $rootScope.paymentPin,
           addr: $routeParams.addr
         }, function(response) {
           $scope.isPrivate = false;
@@ -93,9 +93,11 @@ angular.module('enbitcoins.controllers')
           }
 
           $scope.sending = false;
+          $scope.ready = true;
         }, function() {
           notifications.error('Error al obtener esta transacción.');
           $scope.sending = false;
+          $scope.ready = true;
         });
     };
 

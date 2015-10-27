@@ -1,30 +1,32 @@
-<div class="modal-header">
-  <h3 class="modal-title">
-    Contacto
-  </h3>
+<div ng-init="init()">
+  <div class="modal-header">
+    <h3 class="modal-title">
+      Contacto
+    </h3>
+  </div>
+
+  <form ng-submit="submit()" name="form">
+    <div class="modal-body">
+
+      <div class="form-group" ng-if="addr">
+        <label for="addr">Dirección:</label>
+        {{addr}}
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="contact-email" ng-model="email" class="form-control" placeholder="Email" ng-disabled="sending" required>
+      </div>
+
+      <div class="form-group">
+        <label for="msg">Mensaje</label>
+        <textarea name="msg" rows="3" class="form-control" ng-model="msg" ng-disabled="sending" required></textarea>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" ng-click="close()">Cerrar</button>
+      <button type="submit" class="btn btn-success" ng-disabled="sending || form.$invalid">Enviar</button>
+    </div>
+  </form>
 </div>
-
-<form ng-submit="submit()" name="form">
-  <div class="modal-body">
-
-    <div class="form-group" ng-if="addr">
-      <label for="addr">Dirección</label>
-      {{addr}}
-    </div>
-
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input type="email" ng-model="email" class="form-control" placeholder="Email" ng-disabled="sending" required>
-    </div>
-
-    <div class="form-group">
-      <label for="msg">Mensaje</label>
-      <textarea name="msg" rows="3" class="form-control" ng-model="msg" ng-disabled="sending" required></textarea>
-    </div>
-  </div>
-
-  <div class="modal-footer">
-    <button type="button" class="btn btn-default" ng-click="close()">Cerrar</button>
-    <button type="submit" class="btn btn-success" ng-disabled="sending || form.$invalid">Enviar</button>
-  </div>
-</form>

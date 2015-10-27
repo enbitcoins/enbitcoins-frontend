@@ -11,7 +11,7 @@ angular.module('enbitcoins.controllers')
 
       Ticker
         .getLastPrice(function(response) {
-          $scope.priceTxt = response.country.code + ' $' + response.btc;
+          $scope.priceTxt = response.country.code + ' ' + response.btc;
         });
     };
 

@@ -1,5 +1,5 @@
 <div ng-init="init()">
-  <div class="container tx-panel" ng-class="{'tx-pending': (tx.status === 'waitingForBitcoins' || tx.status === 'waitingForConfirmations' || tx.status === 'waitingForProvision'), 'tx-success': tx.status === 'provisioned', 'tx-error': tx.status === 'cancelled'}" ng-if="!isPrivate">
+  <div class="container tx-panel" ng-class="{'tx-pending': (tx.status === 'waitingForBitcoins' || tx.status === 'waitingForConfirmations' || tx.status === 'waitingForProvision'), 'tx-success': tx.status === 'provisioned', 'tx-error': tx.status === 'cancelled'}" ng-if="!isPrivate && ready">
     <div class="tx-status">
       <span ng-if="tx.status === 'waitingForBitcoins' || tx.status === 'waitingForConfirmations' || tx.status === 'waitingForProvision'">Pendiente</span>
       <span ng-if="tx.status === 'provisioned'">Éxito</span>
@@ -138,15 +138,15 @@
                 </span>
                 <strong>Empresa</strong>
               </li>
-              <li class="list-group-item" ng-if="tx.fileUrl">
-                <a ng-href="tx.fileUrl" class="pull-right" target="_blank">
+              <li class="list-group-item" ng-if="fileUrl">
+                <a ng-href="{{fileUrl}}" class="pull-right" target="_blank">
                   Ver Archivo
                 </a>
                 <strong>Archivo</strong>
               </li>
               <li class="list-group-item">
                 <span class="pull-right">
-                  {{tx.bill_amount}}
+                  {{$root.country.currency_code}} {{tx.bill_amount}}
                 </span>
                 <strong>Importe</strong>
               </li>
@@ -157,8 +157,7 @@
                 <strong>ARS/BTC</strong>
               </li>
               <li class="list-group-item">
-                <a href="" class="pull-right" clip-copy="'{{tx.addr}}'" clip-click="copyAddr()">
-                  <!-- 1FdBScnW6icdqHWrgBebHgX1tr2rrfjkck -->
+                <a href="" class="pull-right" clip-copy="tx.addr" clip-click="copyAddr()">
                   {{tx.addr}}
                 </a>
                 <strong>Dirección</strong>
@@ -178,7 +177,7 @@
     </div>
   </div>
 
-  <div class="container" ng-if="isPrivate">
+  <div class="container" ng-if="isPrivate && ready">
     <div class="col-md-4 col-md-offset-4 pin-form">
       <div class="login-panel panel panel-default">
         <div class="panel-heading">
@@ -190,7 +189,7 @@
         <div class="panel-body">
           <form name="pinForm" ng-submit="validatePin()">
             <div class="form-group">
-              <input type="password" class="form-control" ng-model="paymentPin" ng-disabled="sending" autofocus required>
+              <input type="password" class="form-control" ng-model="$root.paymentPin" ng-disabled="sending" autofocus required>
             </div>
             <button type="submit" class="btn btn-success btn-block" ng-disabled="pinForm.$invalid || sending">Ingresar</button>
           </form>
