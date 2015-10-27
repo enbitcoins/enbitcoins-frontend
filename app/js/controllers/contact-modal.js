@@ -4,10 +4,10 @@ angular.module('enbitcoins.controllers')
   .controller('ContactModalCtrl', ['$scope', '$modalInstance', '$http', 'notifications', 'apiUrl', 'apiCountry', 'addr', function($scope, $modalInstance, $http, notifications, apiUrl, apiCountry, addr) {
 
     $scope.sending = false;
+    $scope.addr = addr;
 
     $scope.submit = function() {
       $scope.sending = true;
-      $scope.addr = addr;
 
       $http
         .post(apiUrl + '/contact?country=' + apiCountry, {
