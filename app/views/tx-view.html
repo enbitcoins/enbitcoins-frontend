@@ -43,6 +43,11 @@
             <div class="alert alert-info">
               Una vez realizada la transacción, se esperará la confirmación de la misma.
             </div>
+
+            <div>
+              Realizaste el pago pero esta página no se actualizó aún? No te preocupes!
+              <button type="button" class="btn btn-success" ng-click="checkPayment()">Verificar manualmente</button>
+            </div>
           </div>
 
           <div class="step" ng-if="step > 0">

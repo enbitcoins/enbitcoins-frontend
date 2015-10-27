@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('enbitcoins.controllers')
-  .controller('HomeCtrl', ['$rootScope', '$scope', '$timeout', '$location', '$http', 'notifications', 'apiUrl', 'apiCountry', function($rootScope, $scope, $timeout, $location, $http, notifications, apiUrl, apiCountry) {
+  .controller('HomeCtrl', ['$rootScope', '$scope', '$timeout', '$location', '$http', 'notifications', 'apiUrl', 'apiCountry', 'Payments', function($rootScope, $scope, $timeout, $location, $http, notifications, apiUrl, apiCountry, Payments) {
 
     $scope.$watch('company.selected', function(newVal, oldVal) {
       if (oldVal !== newVal) {
@@ -40,10 +40,10 @@ angular.module('enbitcoins.controllers')
     $scope.confirm = function() {
       $scope.sending = true;
 
-      var paymentUrl = apiUrl + '/payments?country=' + $rootScope.country.slug;
-      $http
-        .post(paymentUrl, $scope.payment)
-        .then(function(response) {
+      Payments
+        .create($scope.payment, function(response) {
+          console.log('confirm', response);
+
           $rootScope.paymentPin = $scope.payment.pin;
           $scope.sending = false;
 

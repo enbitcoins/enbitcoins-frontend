@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('enbitcoins.controllers')
-  .controller('TransactionCtrl', ['$rootScope', '$scope', '$routeParams', '$location', 'notifications', 'Transactions', function($rootScope, $scope, $routeParams, $location, notifications, Transactions) {
+  .controller('TransactionCtrl', ['$rootScope', '$scope', '$routeParams', '$location', 'notifications', 'Transactions', 'Payments', function($rootScope, $scope, $routeParams, $location, notifications, Transactions, Payments) {
 
     var _getFileUrl = function(billFile) {
       return 'https://files.enbitcoins.com/' + $rootScope.country.slug + '/' + billFile;
@@ -103,6 +103,17 @@ angular.module('enbitcoins.controllers')
 
     $scope.copyAddr = function() {
       notifications.success('Dirección copiada.');
+    };
+
+    $scope.checkPayment = function() {
+      Payments
+        .check({
+          addr: $routeParams.addr
+        }, function(response) {
+          console.log('checkPayment response', response);
+        }, function(error) {
+          console.log('checkPayment error', error);
+        });
     };
 
     // $scope.askRefund = function() {
