@@ -5,7 +5,9 @@ angular.module('enbitcoins.services')
 
     var urlResource = apiUrl + '/addrs/:addr?country=' + apiCountry;
 
-    return $resource(urlResource, {},
+    return $resource(urlResource, {
+      addr: '@addr'
+    },
     {
       get: { method: 'GET' },
       validatePin: { method: 'POST' }
