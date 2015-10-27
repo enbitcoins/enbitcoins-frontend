@@ -189,9 +189,7 @@
 
         <div class="panel-body">
           <form name="pinForm" ng-submit="validatePin()">
-            <div class="form-group">
-              <input class="form-control" type="password" ng-model="pin" autofocus required ng-disabled="sending">
-            </div>
+            <input type="password" class="form-control" ng-model="pin" ng-disabled="sending" autofocus required>
             <button type="submit" class="btn btn-success btn-block" ng-disabled="pinForm.$invalid || sending">Ingresar</button>
           </form>
         </div>
