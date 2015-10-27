@@ -63,6 +63,16 @@ body {
   color: $color-yellow;
 }
 
+.text-orange {
+  color: $color-orange;
+}
+
+// Bootstrap overwrite
+.btn-success {
+  background-color: $color-green;
+  border-color: $color-green;
+}
+
 #navbar {
   background: #fff;
   box-shadow: 0 1px 4px rgba(0,0,0,.15);
@@ -157,6 +167,18 @@ body {
   font-size: 16px;
   margin-bottom: 30px;
   padding: 20px 40px;
+}
+
+#seguridad {
+  li {
+    p {
+      line-height: 25px;
+
+      i {
+        font-size: 25px;
+      }
+    }
+  }
 }
 
 #error {
