@@ -85,10 +85,18 @@
 }
 
 #step1 {
-  .fa-spin {
-    margin-top: -30px;
+  .fa-spin,
+  .no-results {
     float: right;
     margin-right: 15px;
+  }
+
+  .fa-spin {
+    margin-top: -30px;
+  }
+
+  .no-results {
+    margin-top: -34px;
   }
 }
 

@@ -7,13 +7,13 @@
   </div>
 
   <div class="row payment-steps">
-    <div class="col-md-5 col-md-offset-1 col-xs-5 col-xs-offset-1 step-tab" ng-class="{active: step === 1}" ng-click="setStep(1)">
+    <div class="col-md-5 col-md-offset-1 col-xs-5 col-xs-offset-1 step-tab" ng-class="{active: step === 1, ready: step === 2}" ng-click="setStep(1)">
       <span class="text-blue">
         1. Empresa
       </span>
     </div>
 
-    <div class="col-md-5 col-xs-5 step-tab" ng-class="{active: step === 2}" ng-click="setStep(2)">
+    <div class="col-md-5 col-xs-5 step-tab" ng-class="{active: step === 2}">
       <span class="text-blue">
         2. Detalles
       </span>
@@ -24,7 +24,7 @@
         <div class="col-md-5 col-md-offset-1 text-center">
           <input type="text" ng-model="companySelected" placeholder="Buscar una empresa" typeahead="name for item in getCompanies($viewValue)" typeahead-loading="loadingCompanies" typeahead-no-results="noResults" typeahead-min-length="3" typeahead-on-select="selectCompany($item)" class="form-control input-lg">
           <i ng-show="loadingCompanies" class="fa fa-refresh fa-spin text-blue"></i>
-          <div ng-show="noResults">
+          <div class="no-results text-red" ng-show="noResults">
             <i class="fa fa-times"></i> Sin resultados
           </div>
         </div>
