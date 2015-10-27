@@ -78,7 +78,9 @@ angular.module('enbitcoins.controllers')
           pin: $scope.pin || $rootScope.paymentPin,
           addr: $routeParams.addr
         }, function(response) {
-          $scope.transaction = response;
+          $scope.isPrivate = false;
+          $scope.step = _getStep(response.status);
+          $scope.tx = response;
 
           if (response.bill_file) {
             $scope.fileUrl = _getFileUrl(response.bill_file);
