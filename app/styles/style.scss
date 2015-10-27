@@ -74,7 +74,8 @@ body {
 
   &:hover,
   &.active,
-  &[disabled] {
+  &[disabled],
+  &[disabled]:hover {
     background-color: $color-green-hover;
     border-color: $color-green-hover;
   }
