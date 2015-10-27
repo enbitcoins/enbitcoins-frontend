@@ -73,11 +73,11 @@ angular.module('enbitcoins.controllers')
     $scope.validatePin = function() {
       $scope.sending = true;
 
-      console.log('validatePin', $scope.pin, $rootScope.paymentPin, $routeParams.addr);
+      console.log('validatePin', $scope.paymentPin, $rootScope.paymentPin, $routeParams.addr);
 
       Transactions
         .validatePin({
-          pin: $scope.pin || $rootScope.paymentPin,
+          pin: $scope.paymentPin || $rootScope.paymentPin,
           addr: $routeParams.addr
         }, function(response) {
           $scope.isPrivate = false;

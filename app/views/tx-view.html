@@ -183,13 +183,15 @@
       <div class="login-panel panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title text-center">
-            PIN de seguridad
+            PIN de seguridad {{paymentPin}}
           </h3>
         </div>
 
         <div class="panel-body">
           <form name="pinForm" ng-submit="validatePin()">
-            <input type="password" class="form-control" ng-model="pin" ng-disabled="sending" autofocus required>
+            <div class="form-group">
+              <input type="password" class="form-control" ng-model="paymentPin" ng-disabled="sending" autofocus required>
+            </div>
             <button type="submit" class="btn btn-success btn-block" ng-disabled="pinForm.$invalid || sending">Ingresar</button>
           </form>
         </div>

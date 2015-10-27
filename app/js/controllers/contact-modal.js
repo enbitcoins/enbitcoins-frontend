@@ -7,6 +7,7 @@ angular.module('enbitcoins.controllers')
 
     $scope.submit = function() {
       $scope.sending = true;
+      $scope.addr = addr;
 
       $http
         .post(apiUrl + '/contact?country=' + apiCountry, {
