@@ -42,8 +42,10 @@ angular.module('enbitcoins.controllers')
       $http
         .post(paymentUrl, $scope.payment)
         .then(function(response) {
-          $location.path(response.data.addr);
+          $rootScope.paymentPin = $scope.payment.pin;
           $scope.sending = false;
+
+          $location.path(response.data.addr);
         }, function(error) {
           console.log('error', error);
           // notifications.error(error.data.message);
