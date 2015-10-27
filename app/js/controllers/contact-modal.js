@@ -9,7 +9,7 @@ angular.module('enbitcoins.controllers')
 
       $timeout(function() {
         document.getElementById('contact-email').focus();
-      });
+      }, 300);
     };
 
     $scope.submit = function() {
