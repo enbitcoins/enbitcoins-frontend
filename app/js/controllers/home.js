@@ -18,17 +18,21 @@ angular.module('enbitcoins.controllers')
       $scope.step = 1;
     };
 
-    $scope.refreshCompanies = function(company) {
+    $scope.getCompanies = function(company) {
       var params = {
         q: company,
         country: apiCountry
       };
 
-      $http
+      return $http
         .get(apiUrl + '/companies', { params: params })
         .then(function(response) {
           $scope.companies = response.data;
         });
+    };
+
+    $scope.selectCompany = function(item) {
+      console.log('selectCompany', item);
     };
 
     $scope.confirm = function() {

@@ -10,7 +10,6 @@ angular.module('enbitcoins', [
   'angular-growl',
   'ui.bootstrap',
   'ui.bootstrap.tpls',
-  'ui.select',
   'lr.upload',
 
   'templates',

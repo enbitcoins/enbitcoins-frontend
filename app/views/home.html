@@ -22,14 +22,11 @@
     <div id="step1" ng-if="step === 1">
       <div ng-if="!uploadLoading">
         <div class="col-md-5 col-md-offset-1 text-center">
-          <ui-select ng-model="company.selected" theme="bootstrap" ng-disabled="disabled">
-            <ui-select-match placeholder="Buscar una empresa">
-              {{$select.selected.name}}
-            </ui-select-match>
-            <ui-select-choices repeat="comp in companies" refresh="refreshCompanies($select.search)" refresh-delay="0">
-              <div ng-bind-html="comp.name | highlight: $select.search"></div>
-            </ui-select-choices>
-          </ui-select>
+          <input type="text" ng-model="companySelected" placeholder="Buscar una empresa" typeahead="item in getCompanies($viewValue)" typeahead-loading="loadingCompanies" typeahead-no-results="noResults" typeahead-min-length="3" typeahead-on-select="selectCompany($item)" class="form-control input-lg">
+          <i ng-show="loadingCompanies" class="fa fa-refresh fa-"></i>
+          <div ng-show="noResults">
+            <i class="fa fa-times"></i> Sin resultados
+          </div>
         </div>
 
         <div class="col-md-5 text-center">
@@ -52,48 +49,44 @@
 
     <div id="step2" ng-if="step === 2">
       <form name="paymentForm" ng-submit="confirm()">
-        <div>
-          <div class="form-group col-md-5 col-md-offset-1 col-xs-12">
-            <label for="amount">Monto</label>
-            <div class="input-group">
-              <span class="input-group-addon">$</span>
-              <input type="number" class="form-control input-lg" id="amount" ng-model="payment.amount" tabindex="1" required>
-            </div>
+        <div class="form-group col-md-5 col-md-offset-1 col-xs-12">
+          <label for="amount">Monto</label>
+          <div class="input-group">
+            <span class="input-group-addon">$</span>
+            <input type="number" class="form-control input-lg" id="amount" ng-model="payment.amount" tabindex="1" required>
           </div>
-          <div class="form-group col-md-5 col-md-offset-1 col-xs-12">
-            <label for="code">
-              {{company.selected.pay_data_name || 'Código'}}
-              <i class="fa fa-question-circle text-blue" popover="{{company.selected.pay_data_help}}" popover-trigger="mouseenter"></i>
-            </label>
-            <div class="input-group">
-              <span class="input-group-addon">#</span>
-              <input type="text" class="form-control input-lg" ng-model="payment.code" tabindex="2" required>
-            </div>
+        </div>
+        <div class="form-group col-md-5 col-xs-12">
+          <label for="code">
+            {{company.selected.pay_data_name || 'Código'}}
+            <i class="fa fa-question-circle text-blue" popover="{{company.selected.pay_data_help}}" popover-trigger="mouseenter"></i>
+          </label>
+          <div class="input-group">
+            <span class="input-group-addon">#</span>
+            <input type="text" class="form-control input-lg" ng-model="payment.code" tabindex="2" required>
           </div>
         </div>
 
-        <div>
-          <div class="form-group col-md-5 col-xs-12">
-            <label for="email">
-              Email <small class="text-muted">(opcional)</small>
-              <i class="fa fa-question-circle text-blue" popover="Correo electrónico para recibir notificaciones sobre el estado de su pago." popover-trigger="mouseenter"></i>
-            </label>
-            <div class="input-group">
-              <span class="input-group-addon">@</span>
-              <input type="email" class="form-control input-lg" ng-model="payment.email" tabindex="3">
-            </div>
+        <div class="form-group col-md-5 col-md-offset-1 col-xs-12">
+          <label for="email">
+            Email <small class="text-muted">(opcional)</small>
+            <i class="fa fa-question-circle text-blue" popover="Correo electrónico para recibir notificaciones sobre el estado de su pago." popover-trigger="mouseenter"></i>
+          </label>
+          <div class="input-group">
+            <span class="input-group-addon">@</span>
+            <input type="email" class="form-control input-lg" ng-model="payment.email" tabindex="3">
           </div>
-          <div class="form-group col-md-5 col-xs-12">
-            <label for="pin">
-              PIN <small class="text-muted">(opcional)</small>
-              <i class="fa fa-question-circle text-blue" popover="PIN numérico para restringir el acceso a los datos de su pago." popover-trigger="mouseenter"></i>
-            </label>
-            <div class="input-group">
-              <span class="input-group-addon">
-                <i class="fa fa-lock"></i>
-              </span>
-              <input type="number" class="form-control input-lg" ng-model="payment.pin" tabindex="4">
-            </div>
+        </div>
+        <div class="form-group col-md-5 col-xs-12">
+          <label for="pin">
+            PIN <small class="text-muted">(opcional)</small>
+            <i class="fa fa-question-circle text-blue" popover="PIN numérico para restringir el acceso a los datos de su pago." popover-trigger="mouseenter"></i>
+          </label>
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="fa fa-lock"></i>
+            </span>
+            <input type="number" class="form-control input-lg" ng-model="payment.pin" tabindex="4">
           </div>
         </div>
 

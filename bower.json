@@ -25,7 +25,6 @@
     "ng-clip": "~0.2.6",
     "zeroclipboard": "~2.2.0",
     "angular-sanitize": "~1.4.7",
-    "ui-select": "angular-ui-select#~0.13.2",
     "angular-upload": "~1.0.12",
     "angular-typewrite": "~0.0.4"
   },
