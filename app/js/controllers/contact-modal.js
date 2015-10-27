@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('enbitcoins.controllers')
-  .controller('ContactModalCtrl', ['$scope', '$modalInstance', '$http', 'notifications', 'apiUrl', 'apiCountry', function($scope, $modalInstance, $http, notifications, apiUrl, apiCountry) {
+  .controller('ContactModalCtrl', ['$scope', '$modalInstance', '$http', 'notifications', 'apiUrl', 'apiCountry', 'addr', function($scope, $modalInstance, $http, notifications, apiUrl, apiCountry, addr) {
 
     $scope.sending = false;
 
@@ -9,7 +9,11 @@ angular.module('enbitcoins.controllers')
       $scope.sending = true;
 
       $http
-        .post(apiUrl + '/contact?country=' + apiCountry)
+        .post(apiUrl + '/contact?country=' + apiCountry, {
+          msg: $scope.msg,
+          email: $scope.email,
+          addr: addr
+        })
         .success(function() {
           $scope.sending = false;
           notifications.success('Mensaje enviado correctamente.');
