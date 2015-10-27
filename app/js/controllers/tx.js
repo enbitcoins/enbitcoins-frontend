@@ -73,6 +73,8 @@ angular.module('enbitcoins.controllers')
     $scope.validatePin = function() {
       $scope.sending = true;
 
+      console.log('validatePin', $scope.pin, $rootScope.paymentPin, $routeParams.addr);
+
       Transactions
         .validatePin({
           pin: $scope.pin || $rootScope.paymentPin,
