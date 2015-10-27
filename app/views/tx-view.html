@@ -146,13 +146,13 @@
               </li>
               <li class="list-group-item">
                 <span class="pull-right">
-                  {{$root.country.currency_code}} {{tx.bill_amount}}
+                  {{$root.country.currency_code}} <strong>{{tx.bill_amount}}</strong>
                 </span>
                 <strong>Importe</strong>
               </li>
               <li class="list-group-item">
                 <span class="pull-right">
-                  {{tx.convertion_rate}}
+                  {{$root.country.currency_code}} <strong>{{tx.convertion_rate}}</strong>
                 </span>
                 <strong>ARS/BTC</strong>
               </li>
@@ -163,7 +163,9 @@
                 <strong>Dirección</strong>
               </li>
               <li class="list-group-item">
-                <span class="pull-right">{{tx.due_amount_satoshis | toBitcoins}} BTC</span>
+                <span class="pull-right">
+                  <strong>{{tx.due_amount_satoshis | toBitcoins}}</strong> BTC
+                </span>
                 <strong>Total</strong>
               </li>
             </ul>
@@ -182,7 +184,7 @@
       <div class="login-panel panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title text-center">
-            PIN de seguridad {{paymentPin}}
+            PIN de seguridad
           </h3>
         </div>
 
