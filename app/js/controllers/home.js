@@ -11,8 +11,6 @@ angular.module('enbitcoins.controllers')
     });
 
     $scope.init = function() {
-      $scope.companies = [];
-      $scope.company = {};
       $scope.payment = {};
       $scope.uploadLoading = false;
       $scope.step = 1;
@@ -27,12 +25,16 @@ angular.module('enbitcoins.controllers')
       return $http
         .get(apiUrl + '/companies', { params: params })
         .then(function(response) {
-          $scope.companies = response.data;
+          return response.data;
         });
     };
 
     $scope.selectCompany = function(item) {
-      console.log('selectCompany', item);
+      $scope.company = item;
+      $scope.payment.company = item._id;
+      $scope.payment.file = null;
+
+      $scope.setStep(2);
     };
 
     $scope.confirm = function() {
@@ -68,8 +70,10 @@ angular.module('enbitcoins.controllers')
     };
 
     $scope.onSuccess = function(response) {
-      $scope.setStep(2);
       $scope.payment.file = response.data.file;
+      $scope.payment.company = null;
+
+      $scope.setStep(2);
     };
 
     $scope.onError = function(response) {

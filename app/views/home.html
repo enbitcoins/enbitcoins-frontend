@@ -18,8 +18,7 @@
     <div id="step1" ng-if="step === 1">
       <div ng-if="!uploadLoading">
         <div class="col-md-5 col-md-offset-1 text-center">
-          =={{companySelected}}==
-          <input type="text" ng-model="companySelected" placeholder="Buscar una empresa" typeahead="comp as comp.name for item in getCompanies($viewValue)" typeahead-loading="loadingCompanies" typeahead-no-results="noResults" typeahead-min-length="2" typeahead-on-select="selectCompany($item)" class="form-control input-lg">
+          <input type="text" ng-model="companySelected" placeholder="Buscar una empresa" typeahead="company as company.name for company in getCompanies($viewValue)" typeahead-loading="loadingCompanies" typeahead-no-results="noResults" typeahead-min-length="2" typeahead-on-select="selectCompany($item)" class="form-control input-lg">
           <i ng-show="loadingCompanies" class="fa fa-refresh fa-spin text-blue"></i>
           <div class="no-results text-red" ng-show="noResults">
             <i class="fa fa-times"></i> Sin resultados
@@ -55,8 +54,8 @@
         </div>
         <div class="form-group col-md-5 col-xs-12">
           <label for="code">
-            {{company.selected.pay_data_name || 'Código'}}
-            <i class="fa fa-question-circle text-blue" popover="{{company.selected.pay_data_help}}" popover-trigger="mouseenter"></i>
+            {{company.pay_data_name || 'Código'}}
+            <i class="fa fa-question-circle text-blue" popover="{{company.pay_data_help}}" popover-trigger="mouseenter"></i>
           </label>
           <div class="input-group">
             <span class="input-group-addon">#</span>
