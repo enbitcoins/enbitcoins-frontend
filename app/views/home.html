@@ -48,7 +48,9 @@
         <div class="form-group col-md-5 col-md-offset-1 col-xs-12">
           <label for="amount">Monto</label>
           <div class="input-group">
-            <span class="input-group-addon">$</span>
+            <span class="input-group-addon">
+              <i class="fa fa-usd"></i>
+            </span>
             <input type="number" step="any" class="form-control input-lg" id="amount" ng-model="payment.amount" ng-disabled="sending" tabindex="1" required>
           </div>
         </div>
@@ -58,7 +60,9 @@
             <i class="fa fa-question-circle text-blue" popover="{{company.pay_data_help}}" popover-trigger="mouseenter"></i>
           </label>
           <div class="input-group">
-            <span class="input-group-addon">#</span>
+            <span class="input-group-addon">
+              <i class="fa fa-asterisk"></i>
+            </span>
             <input type="text" class="form-control input-lg" ng-model="payment.code" ng-disabled="sending" tabindex="2" required>
           </div>
         </div>
@@ -69,7 +73,9 @@
             <i class="fa fa-question-circle text-blue" popover="Correo electrónico para recibir notificaciones sobre el estado de su pago." popover-trigger="mouseenter"></i>
           </label>
           <div class="input-group">
-            <span class="input-group-addon">@</span>
+            <span class="input-group-addon">
+              <i class="fa fa-at"></i>
+            </span>
             <input type="email" class="form-control input-lg" ng-model="payment.email" ng-disabled="sending" tabindex="3">
           </div>
         </div>
