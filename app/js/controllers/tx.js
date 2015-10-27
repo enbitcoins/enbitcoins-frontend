@@ -106,13 +106,17 @@ angular.module('enbitcoins.controllers')
     };
 
     $scope.checkPayment = function() {
+      $scope.checkingPayment = true;
+
       Payments
         .check({
           addr: $routeParams.addr
         }, function(response) {
           console.log('checkPayment response', response);
+          $scope.checkingPayment = false;
         }, function(error) {
-          console.log('checkPayment error', error);
+          notifications.error('Lo sentimos, pero aún no se ha realizado la transacción.');
+          $scope.checkingPayment = false;
         });
     };
 
