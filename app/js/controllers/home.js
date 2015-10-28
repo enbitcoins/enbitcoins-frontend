@@ -75,6 +75,7 @@ angular.module('enbitcoins.controllers')
     };
 
     $scope.onError = function(response) {
+      alert(response);
       notifications.error('Error al subir el archivo.');
     };
 
