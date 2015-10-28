@@ -75,8 +75,7 @@ angular.module('enbitcoins.controllers')
     };
 
     $scope.onError = function(response) {
-
-      notifications.error(JSON.stringify(response)));
+      notifications.error(JSON.stringify(response));
     };
 
     $scope.onComplete = function(response) {
