@@ -48,7 +48,10 @@
               <p>
                 ¿Realizaste el pago pero esta página no se actualizó aún? ¡No te preocupes!
               </p>
-              <button type="button" class="btn btn-sm btn-success" ng-click="checkPayment()" ng-disabled="checkingPayment">Verificar manualmente</button>
+              <button type="button" class="btn btn-sm btn-success" ng-click="checkPayment()" ng-disabled="checkingPayment">
+                <span ng-if="checkingPayment">Verificando...</span>
+                <span ng-if="!checkingPayment">Verificar manualmente</span>
+              </button>
             </div>
           </div>
 
