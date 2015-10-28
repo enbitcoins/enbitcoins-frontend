@@ -203,7 +203,7 @@
         <div class="panel-body">
           <form name="pinForm" ng-submit="validatePin()">
             <div class="form-group">
-              <input type="password" class="form-control" ng-model="$root.paymentPin" ng-disabled="sending" autofocus required>
+              <input type="password" class="form-control" ng-model="$root.paymentPin" pattern=".{4,4}" ng-disabled="sending" autofocus required>
             </div>
             <button type="submit" class="btn btn-success btn-block" ng-disabled="pinForm.$invalid || sending">Ingresar</button>
           </form>
