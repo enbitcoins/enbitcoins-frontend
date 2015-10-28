@@ -48,7 +48,7 @@
               <p>
                 ¿Realizaste el pago pero esta página no se actualizó aún? ¡No te preocupes!
               </p>
-              <button type="button" class="btn btn-sm btn-success" ng-click="checkPayment()" ng-disabled="checkingPayment">
+              <button type="button" class="btn btn-success btn-lg btn-block" ng-click="checkPayment()" ng-disabled="checkingPayment">
                 <span ng-if="checkingPayment">Verificando...</span>
                 <span ng-if="!checkingPayment">Verificar manualmente</span>
               </button>
@@ -134,6 +134,8 @@
             <h5>
               Puedes descargar el comprobante ahora o guardar esta dirección para futuras consultas.
             </h5>
+            <br>
+            <a ng-href="{{downloadFile}}" class="btn btn-success btn-lg btn-block" target="_blank">Descargar</a>
           </div>
         </div>
       </div>
