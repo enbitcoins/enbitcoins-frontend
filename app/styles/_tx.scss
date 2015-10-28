@@ -57,22 +57,6 @@
     min-height: 520px;
     position: relative;
     width: 60%;
-
-    &:after {
-      border: solid transparent;
-      border-color: rgba(247, 247, 247, 0);
-      border-left-color: #fff;
-      border-width: 20px;
-      content: " ";
-      height: 0;
-      left: 100%;
-      margin-top: -20px;
-      pointer-events: none;
-      position: absolute;
-      top: 50%;
-      width: 0;
-      z-index: 999;
-    }
   }
 
   .info-right {
@@ -174,6 +158,26 @@
     h5 {
       font-size: 0.9em;
       margin: 10px 0 0 32px;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .info-left {
+    &:after {
+      border: solid transparent;
+      border-color: rgba(247, 247, 247, 0);
+      border-left-color: #fff;
+      border-width: 20px;
+      content: " ";
+      height: 0;
+      left: 100%;
+      margin-top: -20px;
+      pointer-events: none;
+      position: absolute;
+      top: 50%;
+      width: 0;
+      z-index: 999;
     }
   }
 }
