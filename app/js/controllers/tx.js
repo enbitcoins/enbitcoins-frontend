@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('enbitcoins.controllers')
-  .controller('TransactionCtrl', ['$rootScope', '$scope', '$routeParams', '$location', 'notifications', 'Transactions', 'Payments', function($rootScope, $scope, $routeParams, $location, notifications, Transactions, Payments) {
+  .controller('TransactionCtrl', ['$rootScope', '$scope', '$routeParams', '$location', 'notifications', 'Transactions', 'Payments', 'apiCountry', function($rootScope, $scope, $routeParams, $location, notifications, Transactions, Payments, apiCountry) {
 
     var _getFileUrl = function(filename) {
-      return 'https://files.enbitcoins.com/' + $rootScope.country.slug + '/' + filename;
+      return 'https://files.enbitcoins.com/' + apiCountry + '/' + filename;
     };
 
     var _getStep = function(status) {
@@ -27,7 +27,7 @@ angular.module('enbitcoins.controllers')
         step = 2;
         break;
 
-      case 'provisioned':
+      case 'finished':
         step = 3;
         break;
       }
