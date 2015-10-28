@@ -75,7 +75,9 @@ body {
   &:hover,
   &:focus,
   &:active,
-  &.active,
+  &:active:hover,
+  &.active:hover,
+  &:active:focus,
   &.disabled,
   &[disabled],
   &[disabled]:hover {
