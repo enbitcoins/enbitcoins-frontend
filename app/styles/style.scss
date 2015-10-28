@@ -73,6 +73,7 @@ body {
   border-color: $color-green;
 
   &:hover,
+  &:focus,
   &.active,
   &[disabled],
   &[disabled]:hover {
