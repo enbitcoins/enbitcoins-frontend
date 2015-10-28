@@ -122,7 +122,6 @@ angular.module('enbitcoins.controllers')
 
     $scope.showCheckButton = function() {
       var limitDate = moment($scope.tx.created_date).add(20, 'm');
-      console.log('showCheckButton', $scope.tx.created_date, limitDate);
       return moment().isAfter(limitDate);
     };
 
