@@ -26,7 +26,7 @@
         </div>
 
         <div class="col-md-5 text-center">
-          <div class="btn btn-success btn-lg btn-block btn-upload" upload-button url="https://api.enbitcoins.com/v1/upload?country={{$root.country.slug}}" param="file" data="formData" accept="image/*,application/pdf" required="true" on-upload="onUpload(files)" on-success="onSuccess(response)" on-error="onError(response)" on-complete="onComplete(response)">Subir factura electrónica</div>
+          <div class="btn btn-success btn-lg btn-block btn-upload" upload-button url="https://api.enbitcoins.com/v1/upload?country={{$root.country.slug}}" param="file" data="formData" accept="image/*,application/pdf" required="true" on-upload="onUpload()" on-success="onSuccess(response)" on-error="onError(response)" on-complete="onComplete()">Subir factura electrónica</div>
         </div>
 
         <div class="col-md-12 col-xs-12 text-center help-text">

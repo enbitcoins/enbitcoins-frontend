@@ -75,10 +75,11 @@ angular.module('enbitcoins.controllers')
     };
 
     $scope.onError = function(response) {
-      notifications.error(JSON.stringify(response));
+      console.log('onError', response);
+      // notifications.error(JSON.stringify(response));
     };
 
-    $scope.onComplete = function(response) {
+    $scope.onComplete = function() {
       $scope.uploadLoading = false;
     };
 
