@@ -88,7 +88,7 @@
             <span class="input-group-addon">
               <i class="fa fa-lock"></i>
             </span>
-            <input type="number" class="form-control input-lg" ng-model="payment.pin" ng-disabled="sending" tabindex="4">
+            <input type="number" class="form-control input-lg" pattern=".{4}" ng-model="payment.pin" ng-disabled="sending" tabindex="4" placeholder="Ej. 1987">
           </div>
         </div>
 
