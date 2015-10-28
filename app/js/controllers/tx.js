@@ -3,8 +3,8 @@
 angular.module('enbitcoins.controllers')
   .controller('TransactionCtrl', ['$rootScope', '$scope', '$routeParams', '$location', 'notifications', 'Transactions', 'Payments', function($rootScope, $scope, $routeParams, $location, notifications, Transactions, Payments) {
 
-    var _getFileUrl = function(billFile) {
-      return 'https://files.enbitcoins.com/' + $rootScope.country.slug + '/' + billFile;
+    var _getFileUrl = function(filename) {
+      return 'https://files.enbitcoins.com/' + $rootScope.country.slug + '/' + filename;
     };
 
     var _getStep = function(status) {
@@ -35,6 +35,34 @@ angular.module('enbitcoins.controllers')
       return step;
     };
 
+    var _getTx = function() {
+      Transactions
+        .get({
+          addr: $routeParams.addr
+        }, function(response) {
+          $scope.isPrivate = true;
+          $scope.ready = true;
+
+          if ( ! response.private) {
+            $scope.isPrivate = false;
+            $scope.step = _getStep(response.status);
+            $scope.tx = response;
+
+            if (response.bill_file) {
+              $scope.fileUrl = _getFileUrl(response.bill_file);
+            }
+
+            if (response.provisioning_file) {
+              $scope.downloadFile = _getFileUrl(response.provisioning_file);
+            }
+          }
+        }, function(error) {
+          if (error.data.code === 404) {
+            $location.path('404');
+          }
+        });
+    };
+
     $scope.init = function() {
       $scope.step = 0;
       $scope.ready = false;
@@ -44,31 +72,7 @@ angular.module('enbitcoins.controllers')
       } else {
         $scope.isPrivate = false;
 
-        Transactions
-          .get({
-            addr: $routeParams.addr
-          }, function(response) {
-            $scope.isPrivate = true;
-            $scope.ready = true;
-
-            if ( ! response.private) {
-              $scope.isPrivate = false;
-              $scope.step = _getStep(response.status);
-              $scope.tx = response;
-
-              if (response.bill_file) {
-                $scope.fileUrl = _getFileUrl(response.bill_file);
-              }
-
-              if (response.provisioning_file) {
-                $scope.downloadFile = _getFileUrl(response.provisioning_file);
-              }
-            }
-          }, function(error) {
-            if (error.data.code === 404) {
-              $location.path('404');
-            }
-          });
+        _getTx();
       }
     };
 
@@ -113,6 +117,13 @@ angular.module('enbitcoins.controllers')
           addr: $routeParams.addr
         }, function(response) {
           console.log('checkPayment response', response);
+
+          if ($rootScope.paymentPin) {
+            $scope.validatePin();
+          } else {
+            _getTx();
+          }
+
           $scope.checkingPayment = false;
         }, function(error) {
           notifications.error('Lo sentimos, pero aún no se ha realizado la transacción.');
