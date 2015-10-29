@@ -110,7 +110,7 @@
               </span>
             </h3>
             <h5>
-              En unos momentos tu factura será pagada.
+              En unos momentos el pago será efectuado.
             </h5>
           </div>
 
@@ -140,8 +140,29 @@
             <h5>
               Puedes descargar el comprobante ahora o guardar esta dirección para futuras consultas.
             </h5>
+
             <br>
-            <a ng-href="{{downloadFile}}" class="btn btn-success btn-lg btn-block" target="_blank">Descargar</a>
+
+            <a ng-href="{{downloadFile}}" class="btn btn-success btn-lg btn-block" target="_blank">
+              Descargar
+            </a>
+
+            <hr>
+
+            <p>
+              ¿Te sirvió el servicio? ¡Comentale a tus amigos!
+            </p>
+
+            <div class="col-md-6">
+              <a ng-href="https://www.facebook.com/sharer/sharer.php?u=https://enbitcoins.com" class="btn btn-block btn-share share-fb" target="_blank">
+                Facebook
+              </a>
+            </div>
+            <div class="col-md-6">
+              <a ng-href="https://twitter.com/home?status=Paga%20tus%20facturas,%20tarjetas,%20servicios%20y%20recargas%20en%20%23bitcoins.%20%23enBitcoins%20https://enbitcoins.com" class="btn btn-block btn-share share-tw" target="_blank">
+                Twitter
+              </a>
+            </div>
           </div>
         </div>
       </div>

@@ -105,6 +105,31 @@
     font-weight: normal;
     margin: 10px 0 0 50px;
   }
+
+  .btn-share {
+    color: #fff;
+    text-decoration: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+      &.share-fb {
+        background-color: #5d7bba;
+      }
+
+      &.share-tw {
+        background-color: #22ceff;
+      }
+    }
+
+    &.share-fb {
+      background-color: #3b5998;
+    }
+
+    &.share-tw {
+      background-color: #00acee;
+    }
+  }
 }
 
 .pin-form {
