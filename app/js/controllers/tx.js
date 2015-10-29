@@ -70,10 +70,11 @@ angular.module('enbitcoins.controllers')
     };
 
     $scope.init = function() {
+      $scope.urlPin = $location.search().pin || null;
       $scope.step = 0;
       $scope.ready = false;
 
-      if ($rootScope.paymentPin) {
+      if ($rootScope.paymentPin || $scope.urlPin) {
         $scope.validatePin();
       } else {
         $scope.isPrivate = false;
@@ -87,7 +88,7 @@ angular.module('enbitcoins.controllers')
 
       Transactions
         .validatePin({
-          pin: $rootScope.paymentPin,
+          pin: $rootScope.paymentPin || $scope.urlPin,
           addr: $routeParams.addr
         }, function(response) {
           $scope.isPrivate = false;
