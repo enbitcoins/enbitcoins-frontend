@@ -69,6 +69,7 @@ angular.module('enbitcoins.controllers')
     $scope.onSuccess = function(response) {
       $scope.payment.file = response.data.file;
       $scope.payment.company = null;
+      $scope.company = null;
 
       $scope.setStep(2);
     };
