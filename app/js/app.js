@@ -71,4 +71,8 @@ angular.module('enbitcoins')
 
   .config(['ngClipProvider', function(ngClipProvider) {
     ngClipProvider.setPath('lib/ZeroClipboard.swf');
+  }])
+
+  .config(['$compileProvider', function($compileProvider) {
+    $compileProvider.urlSanitizationWhitelist(/^\s*(https?|bitcoin):/);
   }]);
