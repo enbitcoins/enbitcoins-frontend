@@ -8,7 +8,7 @@ angular.module('enbitcoins.controllers')
     };
 
     var _getBitcoinUrl = function(tx) {
-      return 'bitcoin:' + tx.addr + '?amount=' + $filter('toBitcoins', tx.due_amount_satoshis);
+      return 'bitcoin:' + tx.addr + '?amount=' + $filter('toBitcoins')(tx.due_amount_satoshis);
     };
 
     var _getStep = function(status) {
