@@ -176,6 +176,7 @@ textarea.form-control {
 // Growl
 .growl {
   z-index: 10000;
+  position: fixed;
 }
 .growl-item.ng-enter,
 .growl-item.ng-leave {
