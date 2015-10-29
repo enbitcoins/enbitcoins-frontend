@@ -48,11 +48,17 @@
               <p>
                 ¿Realizaste el pago pero esta página no se actualizó aún? ¡No te preocupes!
               </p>
-              <button type="button" class="btn btn-success btn-lg btn-block" ng-click="checkPayment()" ng-disabled="checkingPayment">
+              <button type="button" class="btn btn-default btn-lg btn-block" ng-click="checkPayment()" ng-disabled="checkingPayment">
                 <span ng-if="checkingPayment">Verificando...</span>
                 <span ng-if="!checkingPayment">Verificar manualmente</span>
               </button>
             </div>
+
+            <hr>
+
+            <a ng-href="{{bitcoinUrl}}" class="btn btn-success btn-lg btn-clock" target="_blank">
+              Pagar desde mi cartera
+            </a>
           </div>
 
           <div class="step" ng-if="step > 0">
@@ -184,7 +190,7 @@
           </div>
 
           <div class="qrcode-container">
-            <img ng-src="https://chart.googleapis.com/chart?chld=Q&chs=250x250&cht=qr&chl=bitcoin:{{tx.addr}}?amount={{tx.due_amount_satoshis | toBitcoins}}" class="img-responsive center-block img-thumbnail">
+            <img ng-src="https://chart.googleapis.com/chart?chld=Q&chs=250x250&cht=qr&chl={{bitcoinUrl}}" class="img-responsive center-block img-thumbnail">
           </div>
         </div>
       </div>

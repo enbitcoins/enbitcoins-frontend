@@ -1,10 +1,14 @@
 'use strict';
 
 angular.module('enbitcoins.controllers')
-  .controller('TransactionCtrl', ['$rootScope', '$scope', '$routeParams', '$location', 'notifications', 'Transactions', 'Payments', 'apiCountry', function($rootScope, $scope, $routeParams, $location, notifications, Transactions, Payments, apiCountry) {
+  .controller('TransactionCtrl', ['$rootScope', '$scope', '$routeParams', '$location', '$filter', 'notifications', 'Transactions', 'Payments', 'apiCountry', function($rootScope, $scope, $routeParams, $location, $filter, notifications, Transactions, Payments, apiCountry) {
 
     var _getFileUrl = function(filename) {
       return 'https://files.enbitcoins.com/' + apiCountry + '/' + filename;
+    };
+
+    var _getBitcoinUrl = function(tx) {
+      return 'bitcoin:' + tx.addr + '?amount=' + $filter('toBitcoins', tx.due_amount_satoshis);
     };
 
     var _getStep = function(status) {
@@ -55,6 +59,8 @@ angular.module('enbitcoins.controllers')
             if (response.provisioning_file) {
               $scope.downloadFile = _getFileUrl(response.provisioning_file);
             }
+
+            $scope.bitcoinUrl = _getBitcoinUrl();
           }
         }, function(error) {
           if (error.data.code === 404) {
@@ -95,6 +101,8 @@ angular.module('enbitcoins.controllers')
           if (response.provisioning_file) {
             $scope.downloadFile = _getFileUrl(response.provisioning_file);
           }
+
+          $scope.bitcoinUrl = _getBitcoinUrl();
 
           $scope.sending = false;
           $scope.ready = true;
