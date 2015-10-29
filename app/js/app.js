@@ -74,5 +74,5 @@ angular.module('enbitcoins')
   }])
 
   .config(['$compileProvider', function($compileProvider) {
-    $compileProvider.urlSanitizationWhitelist(/^\s*(https?|bitcoin):/);
+    $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|bitcoin):/);
   }]);
