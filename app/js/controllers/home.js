@@ -47,8 +47,7 @@ angular.module('enbitcoins.controllers')
 
           $location.path(response.addr);
         }, function(error) {
-          console.log('error', error);
-          // notifications.error(error.data.message);
+          notifications.error(error.data.message);
           $scope.sending = false;
         });
     };
