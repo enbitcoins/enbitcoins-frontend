@@ -63,7 +63,7 @@
             <span class="input-group-addon">
               <i class="fa fa-asterisk"></i>
             </span>
-            <input type="text" class="form-control input-lg" ng-model="payment.code" ng-disabled="sending" tabindex="2" required>
+            <input type="text" class="form-control input-lg" ng-model="payment.code" ng-disabled="sending || payment.file" tabindex="2" ng-required="payment.company">
           </div>
         </div>
 
