@@ -60,7 +60,7 @@ angular.module('enbitcoins.controllers')
               $scope.downloadFile = _getFileUrl(response.provisioning_file);
             }
 
-            $scope.bitcoinUrl = _getBitcoinUrl();
+            $scope.bitcoinUrl = _getBitcoinUrl(response);
           }
         }, function(error) {
           if (error.data.code === 404) {
@@ -102,7 +102,7 @@ angular.module('enbitcoins.controllers')
             $scope.downloadFile = _getFileUrl(response.provisioning_file);
           }
 
-          $scope.bitcoinUrl = _getBitcoinUrl();
+          $scope.bitcoinUrl = _getBitcoinUrl(response);
 
           $scope.sending = false;
           $scope.ready = true;
