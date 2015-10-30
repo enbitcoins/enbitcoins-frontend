@@ -85,8 +85,28 @@
               </span>
             </h3>
             <h5>
-              Debes <strong>{{due | toBitcoins}}</strong> BTC
+              Aún debes enviar <strong>{{due | toBitcoins}}</strong> BTC
             </h5>
+
+            <div class="alert alert-info">
+              Una vez realizada la transacción, se esperará la confirmación de la misma.
+            </div>
+
+            <div class="check-payment" ng-if="showCheckButton()">
+              <p>
+                ¿Realizaste el pago pero esta página no se actualizó aún? ¡No te preocupes!
+              </p>
+              <button type="button" class="btn btn-default btn-lg btn-block" ng-click="checkPayment()" ng-disabled="checkingPayment">
+                <span ng-if="checkingPayment">Verificando...</span>
+                <span ng-if="!checkingPayment">Verificar manualmente</span>
+              </button>
+            </div>
+
+            <hr>
+
+            <a ng-href="{{bitcoinUrl}}" class="btn btn-success btn-lg btn-block" target="_blank">
+              Pagar desde mi cartera
+            </a>
           </div>
 
           <div class="step" ng-if="step === 1 && tx.status === 'waitingForConfirmations'">
