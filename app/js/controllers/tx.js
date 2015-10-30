@@ -51,6 +51,7 @@ angular.module('enbitcoins.controllers')
             $scope.isPrivate = false;
             $scope.step = _getStep(response.status);
             $scope.tx = response;
+            $scope.due = response.due_amount_satoshis - response.paid_amount_satoshis;
 
             if (response.bill_file) {
               $scope.fileUrl = _getFileUrl(response.bill_file);
@@ -95,6 +96,7 @@ angular.module('enbitcoins.controllers')
           $scope.isPrivate = false;
           $scope.step = _getStep(response.status);
           $scope.tx = response;
+          $scope.due = response.due_amount_satoshis - response.paid_amount_satoshis;
 
           if (response.bill_file) {
             $scope.fileUrl = _getFileUrl(response.bill_file);
