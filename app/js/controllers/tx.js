@@ -145,7 +145,7 @@ angular.module('enbitcoins.controllers')
 
             notifications.error('El monto transferido es inferior al solicitado.');
           } else {
-            notifications.error('Lo sentimos, pero aún no se ha realizado la transacción.');
+            notifications.error('Lo sentimos, pero la transacción no se ha completado aún.');
           }
 
           $scope.checkingPayment = false;
