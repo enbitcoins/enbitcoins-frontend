@@ -8,7 +8,7 @@ angular.module('enbitcoins.controllers')
     };
 
     var _getBitcoinUrl = function(tx) {
-      return 'bitcoin:' + tx.addr + '?amount=' + $filter('toBitcoins')(tx.due_amount_satoshis);
+      return 'bitcoin:' + tx.addr + '?amount=' + $filter('toBitcoins')($scope.due || tx.due_amount_satoshis);
     };
 
     var _getStep = function(status) {
@@ -73,6 +73,7 @@ angular.module('enbitcoins.controllers')
       $scope.urlPin = $location.search().pin || null;
       $scope.step = 0;
       $scope.ready = false;
+      $scope.due = null;
 
       if ($rootScope.paymentPin || $scope.urlPin) {
         $scope.validatePin();
@@ -135,7 +136,15 @@ angular.module('enbitcoins.controllers')
 
           $scope.checkingPayment = false;
         }, function(error) {
-          notifications.error('Lo sentimos, pero aún no se ha realizado la transacción.');
+          if (error.data.status) {
+            $scope.due = error.data.due;
+            $scope.tx.status = 'waitingForMoreBitcoins';
+
+            notifications.error('El monto transferido es inferior al solicitado.');
+          } else {
+            notifications.error('Lo sentimos, pero aún no se ha realizado la transacción.');
+          }
+
           $scope.checkingPayment = false;
         });
     };

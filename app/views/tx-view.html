@@ -75,6 +75,20 @@
             </h5>
           </div>
 
+          <div class="step" ng-if="step === 1 && tx.status === 'waitingForMoreBitcoins'">
+            <h3>
+              <span class="step-icon">
+                <i class="fa fa-refresh fa-spin text-yellow"></i>
+              </span>
+              <span>
+                Pago incompleto
+              </span>
+            </h3>
+            <h5>
+              Debes <strong>{{due | toBitcoins}}</strong> BTC
+            </h5>
+          </div>
+
           <div class="step" ng-if="step === 1">
             <h3>
               <span class="step-icon">
@@ -203,7 +217,7 @@
               </li>
               <li class="list-group-item">
                 <span class="pull-right">
-                  <strong>{{tx.due_amount_satoshis | toBitcoins}}</strong> BTC
+                  <strong>{{due || tx.due_amount_satoshis | toBitcoins}}</strong> BTC
                 </span>
                 <strong>Total</strong>
               </li>
