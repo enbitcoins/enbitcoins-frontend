@@ -138,6 +138,7 @@ angular.module('enbitcoins.controllers')
         }, function(error) {
           if (error.data.status) {
             $scope.due = error.data.due;
+            $scope.step = 1;
             $scope.tx.status = 'waitingForMoreBitcoins';
 
             notifications.error('El monto transferido es inferior al solicitado.');

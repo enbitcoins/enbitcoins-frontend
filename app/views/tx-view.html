@@ -89,7 +89,7 @@
             </h5>
           </div>
 
-          <div class="step" ng-if="step === 1">
+          <div class="step" ng-if="step === 1 && tx.status === 'waitingForConfirmations'">
             <h3>
               <span class="step-icon">
                 <i class="fa fa-refresh fa-spin text-yellow"></i>
