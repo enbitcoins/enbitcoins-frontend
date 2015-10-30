@@ -79,7 +79,7 @@ angular.module('enbitcoins.controllers')
       $scope.ready = false;
       $scope.due = null;
 
-      if ($rootScope.paymentPin || $scope.urlPin) {
+      if ($rootScope.paymentPin || ($scope.urlPin && $scope.urlPin !== 'null')) {
         $scope.validatePin();
       } else {
         $scope.isPrivate = false;
