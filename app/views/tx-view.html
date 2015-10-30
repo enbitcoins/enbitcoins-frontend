@@ -1,7 +1,7 @@
 <div ng-init="init()">
-  <div class="container tx-panel" ng-class="{'tx-pending': (tx.status === 'waitingForBitcoins' || tx.status === 'waitingForConfirmations' || tx.status === 'waitingForProvision'), 'tx-success': tx.status === 'finished', 'tx-error': tx.status === 'cancelled'}" ng-if="!isPrivate && ready">
+  <div class="container tx-panel" ng-class="{'tx-pending': (tx.status === 'waitingForBitcoins' || tx.status === 'waitingForMoreBitcoins' || tx.status === 'waitingForConfirmations' || tx.status === 'waitingForProvision'), 'tx-success': tx.status === 'finished', 'tx-error': tx.status === 'cancelled'}" ng-if="!isPrivate && ready">
     <div class="tx-status">
-      <span ng-if="tx.status === 'waitingForBitcoins' || tx.status === 'waitingForConfirmations' || tx.status === 'waitingForProvision'">Pendiente</span>
+      <span ng-if="tx.status === 'waitingForBitcoins' || tx.status === 'waitingForMoreBitcoins' || tx.status === 'waitingForConfirmations' || tx.status === 'waitingForProvision'">Pendiente</span>
       <span ng-if="tx.status === 'finished'">Éxito</span>
       <span ng-if="tx.status === 'cancelled'">Cancelada</span>
     </div>
