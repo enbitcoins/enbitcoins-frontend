@@ -67,6 +67,11 @@
     width: 40%;
   }
 
+  .check-payment,
+  .payment-button {
+    text-align: center;
+  }
+
   .content {
     padding: 45px 30px 30px 30px;
   }
@@ -153,11 +158,6 @@
   }
 
   #tx-info {
-    .check-payment,
-    .payment-button {
-      text-align: center;
-    }
-
     .content {
       padding: 15px 0;
     }
