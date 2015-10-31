@@ -56,9 +56,14 @@
 
             <hr>
 
-            <a ng-href="{{bitcoinUrl}}" class="btn btn-success btn-lg btn-block" target="_blank">
-              Pagar desde mi cartera
-            </a>
+            <div class="payment-button">
+              <a ng-href="{{bitcoinUrl}}" class="btn btn-success btn-lg btn-block" target="_blank">
+                Pagar desde mi cartera
+              </a>
+              <p>
+                Utiliza este botón si tienes tu cartera bitcoin configurada para abrir <u>Bitcoin URIs</u>.
+              </p>
+            </div>
           </div>
 
           <div class="step" ng-if="step > 0">
@@ -104,12 +109,14 @@
 
             <hr>
 
-            <a ng-href="{{bitcoinUrl}}" class="btn btn-success btn-lg btn-block" target="_blank">
-              Pagar desde mi cartera
-            </a>
-            <p>
-              Utiliza este botón si tienes tu cartera bitcoin configurada para abrir <u>Bitcoin URIs</u>.
-            </p>
+            <div class="payment-button">
+              <a ng-href="{{bitcoinUrl}}" class="btn btn-success btn-lg btn-block" target="_blank">
+                Pagar desde mi cartera
+              </a>
+              <p>
+                Utiliza este botón si tienes tu cartera bitcoin configurada para abrir <u>Bitcoin URIs</u>.
+              </p>
+            </div>
           </div>
 
           <div class="step" ng-if="step === 1 && tx.status === 'waitingForConfirmations'">
