@@ -161,6 +161,25 @@
             <div class="alert alert-danger">
               <strong>Detalle</strong>: {{tx.correction_msg}}
             </div>
+
+            <div ng-hide="showCorrectionForm || showRefundForm">
+              <button type="button" class="btn col-md-6 col-xs-12" ng-click="showCorrectionForm = true">
+                Corregir
+              </button>
+              <button type="button" class="btn btn-danger col-md-6 col-xs-12" ng-click="showRefundForm = true">
+                Solicitar reembolso
+              </button>
+            </div>
+
+            <form name="correctionFrom" ng-submit="responseCorrection()" ng-if="showCorrectionForm">
+              <textarea ng-model="correctionResponse" cols="30" rows="10" class="form-control" required></textarea>
+              <button type="submit" class="btn btn-success col-xs-12 pull-right">Enviar</button>
+            </form>
+
+            <form name="refundFrom" ng-submit="askRefund()" ng-if="showRefundForm">
+              <input type="text" class="form-control" ng-model="refundAddr" required>
+              <button type="submit" class="btn btn-success col-xs-12 pull-right">Enviar</button>
+            </form>
           </div>
 
           <div class="step" ng-if="step === 2 && tx.status === 'waitingForProvision'">

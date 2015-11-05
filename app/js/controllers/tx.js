@@ -167,6 +167,18 @@ angular.module('enbitcoins.controllers')
       return moment().isAfter(limitDate);
     };
 
+    $scope.responseCorrection = function() {
+      Transactions
+        .correction({
+          addr: $routeParams.addr,
+          msg: $scope.response
+        }, function() {
+          notifications.success('Respuesta enviada correctamente.');
+        }, function() {
+          notifications.error('Error al enviar la respuesta.');
+        });
+    };
+
     // $scope.askRefund = function() {
     //   $rootScope.loading = true;
 
