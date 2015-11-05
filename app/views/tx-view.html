@@ -1,7 +1,7 @@
 <div ng-init="init()">
-  <div class="container tx-panel" ng-class="{'tx-pending': (tx.status === 'waitingForBitcoins' || tx.status === 'waitingForMoreBitcoins' || tx.status === 'waitingForConfirmations' || tx.status === 'waitingForProvision'), 'tx-success': tx.status === 'finished', 'tx-error': tx.status === 'cancelled'}" ng-if="!isPrivate && ready">
+  <div class="container tx-panel" ng-class="{'tx-pending': (tx.status === 'waitingForBitcoins' || tx.status === 'waitingForMoreBitcoins' || tx.status === 'waitingForConfirmations' || tx.status === 'waitingForProvision' || tx.status === 'waitingForCorrection'), 'tx-success': tx.status === 'finished', 'tx-error': tx.status === 'cancelled'}" ng-if="!isPrivate && ready">
     <div class="tx-status">
-      <span ng-if="tx.status === 'waitingForBitcoins' || tx.status === 'waitingForMoreBitcoins' || tx.status === 'waitingForConfirmations' || tx.status === 'waitingForProvision'">Pendiente</span>
+      <span ng-if="tx.status === 'waitingForBitcoins' || tx.status === 'waitingForMoreBitcoins' || tx.status === 'waitingForConfirmations' || tx.status === 'waitingForProvision' || tx.status === 'waitingForCorrection'">Pendiente</span>
       <span ng-if="tx.status === 'finished'">Éxito</span>
       <span ng-if="tx.status === 'cancelled'">Cancelada</span>
     </div>
@@ -21,7 +21,6 @@
             </h3>
             <h5>
               {{tx.cancelled_date | date:'medium'}}
-              <!-- viernes, 29 de mayo de 2015 17:21 UTC-3 -->
             </h5>
             <div class="alert alert-danger">
               La transacción ha sido cancelada. Ha expirado el tiempo de espera.
@@ -147,7 +146,24 @@
             </h5>
           </div>
 
-          <div class="step" ng-if="step === 2">
+          <div class="step" ng-if="step === 2 && tx.status === 'waitingForCorrection'">
+            <h3>
+              <span class="step-icon">
+                <i class="fa fa-times text-red"></i>
+              </span>
+              <span>
+                Esperando corrección
+              </span>
+            </h3>
+            <h5>
+              {{tx.correction_date | date:'medium'}}
+            </h5>
+            <div class="alert alert-danger">
+              <strong>Detalle</strong>: {{tx.correction_msg}}
+            </div>
+          </div>
+
+          <div class="step" ng-if="step === 2 && tx.status === 'waitingForProvision'">
             <h3>
               <span class="step-icon">
                 <i class="fa fa-refresh fa-spin text-yellow"></i>

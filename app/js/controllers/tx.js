@@ -27,6 +27,10 @@ angular.module('enbitcoins.controllers')
         step = 1;
         break;
 
+      case 'waitingForCorrection':
+        step = 1;
+        break;
+
       case 'waitingForProvision':
         step = 2;
         break;
