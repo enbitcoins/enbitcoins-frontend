@@ -168,31 +168,34 @@ angular.module('enbitcoins.controllers')
     };
 
     $scope.responseCorrection = function() {
+      $scope.sending = true;
+
       Transactions
         .correction({
           addr: $routeParams.addr,
-          msg: $scope.response
+          msg: $scope.correctionResponse
         }, function() {
           notifications.success('Respuesta enviada correctamente.');
+          $scope.sending = false;
         }, function() {
           notifications.error('Error al enviar la respuesta.');
+          $scope.sending = false;
         });
     };
 
-    // $scope.askRefund = function() {
-    //   $rootScope.loading = true;
+    $scope.askRefund = function() {
+      $scope.sending = true;
 
-    //   Transactions
-    //     .askRefund({
-    //       addr: $routeParams.addr,
-    //       addrRefund: $scope.addrRefund
-    //     }, function(response) {
-    //       $rootScope.loading = false;
-    //       // $scope.refund
-    //     }, function() {
-    //       notifications.error('Error asking for refund.');
-    //       $rootScope.loading = false;
-    //     });
-    // };
+      Transactions
+        .askRefund({
+          addr: $routeParams.addr,
+          refund_addr: $scope.refundAddr
+        }, function(response) {
+          $scope.sending = false;
+        }, function() {
+          notifications.error('Error asking for refund.');
+          $scope.sending = false;
+        });
+    };
 
   }]);
