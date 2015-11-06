@@ -83,6 +83,9 @@ angular.module('enbitcoins.controllers')
       $scope.ready = false;
       $scope.due = null;
 
+      $scope.showRefundForm = false;
+      $scope.showCorrectionForm = false;
+
       if ($rootScope.paymentPin || ($scope.urlPin && $scope.urlPin !== 'null')) {
         $scope.validatePin();
       } else {
@@ -167,6 +170,14 @@ angular.module('enbitcoins.controllers')
       return moment().isAfter(limitDate);
     };
 
+    $scope.toggleRefund = function() {
+      $scope.showRefundForm = !$scope.showRefundForm;
+    };
+
+    $scope.toggleCorrection = function() {
+      $scope.showCorrectionForm = !$scope.showCorrectionForm;
+    };
+
     $scope.responseCorrection = function() {
       $scope.sending = true;
 
@@ -193,7 +204,7 @@ angular.module('enbitcoins.controllers')
         }, function(response) {
           $scope.sending = false;
         }, function() {
-          notifications.error('Error asking for refund.');
+          notifications.error('Error al solicitar el reembolso.');
           $scope.sending = false;
         });
     };

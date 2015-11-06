@@ -164,40 +164,40 @@
 
             <div ng-hide="showCorrectionForm || showRefundForm">
               <div class="col-md-6 col-xs-12">
-                <button type="button" class="btn btn-success btn-block" ng-click="showCorrectionForm = true">
+                <button type="button" class="btn btn-success btn-block" ng-click="toggleCorrection()">
                   Corregir
                 </button>
               </div>
               <div class="col-md-6 col-xs-12">
-                <button type="button" class="btn btn-danger btn-block" ng-click="showRefundForm = true">
+                <button type="button" class="btn btn-danger btn-block" ng-click="toggleRefund()">
                   Solicitar reembolso
                 </button>
               </div>
             </div>
 
             <!-- Correction Form -->
-            <form name="correctionForm" ng-submit="responseCorrection()" ng-if="showCorrectionForm === true">
+            <form name="correctionForm" ng-submit="responseCorrection()" ng-if="showCorrectionForm">
               <div class="form-group">
                 <label for="correction-response">Corrección</label>
                 <textarea id="correction-response" ng-model="correctionResponse" rows="3" class="form-control" ng-disabled="sending" required></textarea>
               </div>
               <hr>
               <div class="pull-right">
-                <button type="button" class="btn btn-default" ng-click="showCorrectionForm = false">Cancelar</button>
+                <button type="button" class="btn btn-default" ng-click="toggleCorrection()">Cancelar</button>
                 &nbsp;
                 <button type="submit" class="btn btn-success pull-right" ng-disabled="correctionForm.$invalid || sending">Enviar</button>
               </div>
             </form>
 
             <!-- Refund Form -->
-            <form name="refundForm" ng-submit="askRefund()" ng-if="showRefundForm === true">
+            <form name="refundForm" ng-submit="askRefund()" ng-if="showRefundForm">
               <div class="form-group">
-                <label for="refund-addr">Dirrección para el reembolso</label>
+                <label for="refund-addr">Dirrección bitcoin para el reembolso</label>
                 <input type="text" id="refund-addr" class="form-control" ng-model="refundAddr" ng-disabled="sending" required>
               </div>
               <hr>
               <div class="pull-right">
-                <button type="button" class="btn btn-default" ng-click="showCorrectionForm = false">Cancelar</button>
+                <button type="button" class="btn btn-default" ng-click="toggleRefund()">Cancelar</button>
                 &nbsp;
                 <button type="submit" class="btn btn-success pull-right" ng-disabled="refundForm.$invalid || sending">Enviar</button>
               </div>
