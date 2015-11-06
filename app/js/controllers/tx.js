@@ -206,8 +206,11 @@ angular.module('enbitcoins.controllers')
           addr: $routeParams.addr,
           msg: $scope.correctionResponse
         }, function() {
-          notifications.success('Respuesta enviada correctamente.');
           $scope.sending = false;
+          $scope.correctionResponse = null;
+          $scope.toggleCorrection();
+
+          notifications.success('Respuesta enviada correctamente.');
         }, function() {
           notifications.error('Error al enviar la respuesta.');
           $scope.sending = false;
