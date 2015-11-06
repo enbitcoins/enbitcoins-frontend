@@ -180,9 +180,8 @@ angular.module('enbitcoins.controllers')
       $scope.showRefundForm = !$scope.showRefundForm;
 
       if ($scope.showRefundForm === true) {
-        var input = angular.element(document.getElementById('refund-addr'));
-
         $timeout(function() {
+          var input = angular.element(document.getElementById('refund-addr'));
           input[0].focus();
         }, 400);
       }
@@ -192,9 +191,8 @@ angular.module('enbitcoins.controllers')
       $scope.showCorrectionForm = !$scope.showCorrectionForm;
 
       if ($scope.showCorrectionForm === true) {
-        var textarea = angular.element(document.getElementById('correction-response'));
-
         $timeout(function() {
+          var textarea = angular.element(document.getElementById('correction-response'));
           textarea[0].focus();
         }, 400);
       }
