@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('enbitcoins.controllers')
-  .controller('TransactionCtrl', ['$rootScope', '$scope', '$routeParams', '$location', '$timeout', '$filter', 'notifications', 'Transactions', 'Payments', 'apiCountry', function($rootScope, $scope, $routeParams, $timeout, $location, $filter, notifications, Transactions, Payments, apiCountry) {
+  .controller('TransactionCtrl', ['$rootScope', '$scope', '$routeParams', '$timeout', '$location', '$filter', 'notifications', 'Transactions', 'Payments', 'apiCountry', function($rootScope, $scope, $routeParams, $timeout, $location, $filter, notifications, Transactions, Payments, apiCountry) {
 
     var _getFileUrl = function(filename) {
       return 'https://files.enbitcoins.com/' + apiCountry + '/' + filename;
