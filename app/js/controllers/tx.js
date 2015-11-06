@@ -201,6 +201,8 @@ angular.module('enbitcoins.controllers')
     $scope.responseCorrection = function() {
       $scope.sending = true;
 
+      console.log('responseCorrection', $scope.correctionResponse);
+
       Transactions
         .correction({
           msg: $scope.correctionResponse,
@@ -219,6 +221,8 @@ angular.module('enbitcoins.controllers')
 
     $scope.askRefund = function() {
       $scope.sending = true;
+
+      console.log('askRefund', $scope.refundAddr);
 
       Transactions
         .askRefund({
