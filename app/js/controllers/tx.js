@@ -203,8 +203,8 @@ angular.module('enbitcoins.controllers')
 
       Transactions
         .correction({
-          addr: $routeParams.addr,
-          msg: $scope.correctionResponse
+          msg: $scope.correctionResponse,
+          addr: $routeParams.addr
         }, function() {
           $scope.sending = false;
           $scope.correctionResponse = null;
@@ -222,8 +222,8 @@ angular.module('enbitcoins.controllers')
 
       Transactions
         .askRefund({
-          addr: $routeParams.addr,
-          refund_addr: $scope.refundAddr
+          refund_addr: $scope.refundAddr,
+          addr: $routeParams.addr
         }, function(response) {
           $scope.sending = false;
 

@@ -6,9 +6,7 @@ angular.module('enbitcoins.services')
     var urlResource = apiUrl + '/addrs/:addr';
 
     return $resource(urlResource, {
-      addr: '@addr',
-      refund_addr: '@refund_addr',
-      msg: '@msg'
+      addr: '@addr'
     },
     {
       get: {
