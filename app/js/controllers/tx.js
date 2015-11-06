@@ -201,15 +201,13 @@ angular.module('enbitcoins.controllers')
     $scope.responseCorrection = function() {
       $scope.sending = true;
 
-      console.log('responseCorrection', $scope.correctionResponse);
-
       Transactions
         .correction({
-          msg: $scope.correctionResponse,
+          msg: $rootScope.correctionMsg,
           addr: $routeParams.addr
         }, function() {
           $scope.sending = false;
-          $scope.correctionResponse = null;
+          $scope.correctionMsg = '';
           $scope.toggleCorrection();
 
           notifications.success('Respuesta enviada correctamente.');
@@ -222,11 +220,9 @@ angular.module('enbitcoins.controllers')
     $scope.askRefund = function() {
       $scope.sending = true;
 
-      console.log('askRefund', $scope.refundAddr);
-
       Transactions
         .askRefund({
-          refund_addr: $scope.refundAddr,
+          refund_addr: $rootScope.refundAddr,
           addr: $routeParams.addr
         }, function(response) {
           $scope.sending = false;

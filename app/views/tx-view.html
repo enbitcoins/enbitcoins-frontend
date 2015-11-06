@@ -180,7 +180,7 @@
             <form name="correctionForm" ng-submit="responseCorrection()" ng-if="showCorrectionForm">
               <div class="form-group">
                 <label for="correction-response">Corrección</label>
-                <textarea id="correction-response" ng-model="correctionResponse" rows="3" class="form-control" ng-disabled="sending" required></textarea>
+                <textarea id="correction-response" ng-model="$root.correctionMsg" rows="3" class="form-control" ng-disabled="sending" required></textarea>
               </div>
               <hr>
               <div class="pull-right">
@@ -198,7 +198,7 @@
                   <div class="input-group-addon">
                     <i class="fa fa-qrcode"></i>
                   </div>
-                  <input type="text" id="refund-addr" class="form-control" ng-model="refundAddr" ng-disabled="sending" required>
+                  <input type="text" id="refund-addr" class="form-control" ng-model="$root.refundAddr" ng-disabled="sending" required>
                 </div>
               </div>
               <hr>
