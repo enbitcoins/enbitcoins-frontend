@@ -139,7 +139,11 @@ angular.module('enbitcoins.controllers')
     };
 
     $scope.copyAddr = function() {
-      notifications.success('Dirección copiada.');
+      notifications.success('Dirección copiada en el portapapeles.');
+    };
+
+    $scope.copyAmount = function() {
+      notifications.success('Monto copiado en el portapapeles.');
     };
 
     $scope.checkPayment = function() {
@@ -211,8 +215,8 @@ angular.module('enbitcoins.controllers')
           $scope.toggleCorrection();
 
           notifications.success('Respuesta enviada correctamente.');
-        }, function() {
-          notifications.error('Error al enviar la respuesta.');
+        }, function(error) {
+          notifications.error(error.message || 'Error al enviar la respuesta.');
           $scope.sending = false;
         });
     };
@@ -234,8 +238,8 @@ angular.module('enbitcoins.controllers')
           } else {
             _getTx();
           }
-        }, function() {
-          notifications.error('Error al solicitar el reembolso.');
+        }, function(error) {
+          notifications.error(error.message || 'Error al solicitar el reembolso.');
           $scope.sending = false;
         });
     };

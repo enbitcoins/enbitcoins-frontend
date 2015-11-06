@@ -342,14 +342,22 @@
                 <strong>ARS/BTC</strong>
               </li>
               <li class="list-group-item">
-                <a href="" class="pull-right" clip-copy="tx.addr" clip-click="copyAddr()" style="font-size:13px">
+                <span class="pull-right">
                   {{tx.addr}}
-                </a>
-                <strong>Dirección</strong>
+                  &nbsp;
+                  <a href="" clip-copy="tx.addr" clip-click="copyAddr()" title="Copiar en el portapapeles">
+                    <i class="fa fa-copy"></i>
+                  </a>
+                </span>
+                <strong>A</strong>
               </li>
               <li class="list-group-item">
                 <span class="pull-right">
                   <strong>{{due || tx.due_amount_satoshis | toBitcoins}}</strong> BTC
+                  &nbsp;
+                  <a href="" class="pull-right" clip-copy="due || tx.due_amount_satoshis | toBitcoins" clip-click="copyAmount()" title="Copiar en el portapapeles">
+                    <i class="fa fa-copy"></i>
+                  </a>
                 </span>
                 <strong>Total</strong>
               </li>
