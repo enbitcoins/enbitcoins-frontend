@@ -146,6 +146,7 @@
             </h5>
           </div>
 
+          <!-- Waiting for correction -->
           <div class="step" ng-if="step === 2 && tx.status === 'waitingForCorrection'">
             <h3>
               <span class="step-icon">
@@ -193,7 +194,12 @@
             <form name="refundForm" ng-submit="askRefund()" ng-if="showRefundForm">
               <div class="form-group">
                 <label for="refund-addr">Dirrección bitcoin para el reembolso</label>
-                <input type="text" id="refund-addr" class="form-control" ng-model="refundAddr" ng-disabled="sending" required>
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-qrcode"></i>
+                  </div>
+                  <input type="text" id="refund-addr" class="form-control" ng-model="refundAddr" ng-disabled="sending" required>
+                </div>
               </div>
               <hr>
               <div class="pull-right">
@@ -204,6 +210,22 @@
             </form>
           </div>
 
+          <!-- Waiting for refund -->
+          <div class="step" ng-if="step === 2 && tx.status === 'waitingForRefund'">
+            <h3>
+              <span class="step-icon">
+                <i class="fa fa-refresh fa-spin text-yellow"></i>
+              </span>
+              <span>
+                Esperando reembolso
+              </span>
+            </h3>
+            <h5>
+              {{tx.refund_request_date | date:'medium'}}
+            </h5>
+          </div>
+
+          <!-- Waiting for provision -->
           <div class="step" ng-if="step === 2 && tx.status === 'waitingForProvision'">
             <h3>
               <span class="step-icon">
@@ -218,7 +240,8 @@
             </h5>
           </div>
 
-          <div class="step" ng-if="step > 2">
+          <!-- Provisioned -->
+          <div class="step" ng-if="step === 3">
             <h3>
               <span class="step-icon">
                 <i class="fa fa-check text-green"></i>
@@ -232,7 +255,8 @@
             </h5>
           </div>
 
-          <div class="step" ng-if="step > 2">
+          <!-- Download ticket -->
+          <div class="step" ng-if="step === 3">
             <h3>
               <span class="step-icon">
                 <i class="fa fa-arrow-down text-green"></i>
@@ -267,6 +291,24 @@
                 Twitter
               </a>
             </div>
+          </div>
+
+          <!-- Refunded -->
+          <div class="step" ng-if="step === 4">
+            <h3>
+              <span class="step-icon">
+                <i class="fa fa-check text-green"></i>
+              </span>
+              <span>
+                Pago reembolsado
+              </span>
+            </h3>
+            <h5>
+              {{tx.refund_date | date:'medium'}}
+            </h5>
+            <p>
+              Puedes ver la información de la transaccción desde el <a ng-href="https://blockchain.info/es/tx/{{tx.refund_transaction_hash}}" target="_blank">siguiente enlace</a>
+            </p>
           </div>
         </div>
       </div>

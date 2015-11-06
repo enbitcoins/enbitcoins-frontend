@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('enbitcoins.controllers')
-  .controller('TransactionCtrl', ['$rootScope', '$scope', '$routeParams', '$location', '$filter', 'notifications', 'Transactions', 'Payments', 'apiCountry', function($rootScope, $scope, $routeParams, $location, $filter, notifications, Transactions, Payments, apiCountry) {
+  .controller('TransactionCtrl', ['$rootScope', '$scope', '$routeParams', '$location', '$timeout', '$filter', 'notifications', 'Transactions', 'Payments', 'apiCountry', function($rootScope, $scope, $routeParams, $timeout, $location, $filter, notifications, Transactions, Payments, apiCountry) {
 
     var _getFileUrl = function(filename) {
       return 'https://files.enbitcoins.com/' + apiCountry + '/' + filename;
@@ -31,12 +31,20 @@ angular.module('enbitcoins.controllers')
         step = 2;
         break;
 
+      case 'waitingForRefund':
+        step = 2;
+        break;
+
       case 'waitingForProvision':
         step = 2;
         break;
 
       case 'finished':
         step = 3;
+        break;
+
+      case 'refunded':
+        step = 4;
         break;
       }
 
@@ -141,8 +149,6 @@ angular.module('enbitcoins.controllers')
         .check({
           addr: $routeParams.addr
         }, function(response) {
-          console.log('checkPayment response', response);
-
           if ($rootScope.paymentPin) {
             $scope.validatePin();
           } else {
@@ -172,10 +178,26 @@ angular.module('enbitcoins.controllers')
 
     $scope.toggleRefund = function() {
       $scope.showRefundForm = !$scope.showRefundForm;
+
+      if ($scope.showRefundForm === true) {
+        var input = angular.element(document.getElementById('refund-addr'));
+
+        $timeout(function() {
+          input[0].focus();
+        }, 400);
+      }
     };
 
     $scope.toggleCorrection = function() {
       $scope.showCorrectionForm = !$scope.showCorrectionForm;
+
+      if ($scope.showCorrectionForm === true) {
+        var textarea = angular.element(document.getElementById('correction-response'));
+
+        $timeout(function() {
+          textarea[0].focus();
+        }, 400);
+      }
     };
 
     $scope.responseCorrection = function() {
@@ -203,6 +225,14 @@ angular.module('enbitcoins.controllers')
           refund_addr: $scope.refundAddr
         }, function(response) {
           $scope.sending = false;
+
+          notifications.success('Solicitud de reembolso enviada correctamente.');
+
+          if ($rootScope.paymentPin) {
+            $scope.validatePin();
+          } else {
+            _getTx();
+          }
         }, function() {
           notifications.error('Error al solicitar el reembolso.');
           $scope.sending = false;
