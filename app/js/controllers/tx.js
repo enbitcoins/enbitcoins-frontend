@@ -86,7 +86,9 @@ angular.module('enbitcoins.controllers')
     };
 
     $scope.init = function() {
-      $scope.urlPin = $location.search().pin || null;
+      var pin = $location.search().pin || null;
+
+      $scope.urlPin = angular.isNumber(pin) ? pin : null;
       $scope.step = 0;
       $scope.ready = false;
       $scope.due = null;
