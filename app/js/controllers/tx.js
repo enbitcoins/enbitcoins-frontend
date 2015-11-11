@@ -86,9 +86,9 @@ angular.module('enbitcoins.controllers')
     };
 
     $scope.init = function() {
-      var pin = $location.search().pin || null;
+      var pin = parseInt($location.search().pin, 10) || null;
 
-      $scope.urlPin = angular.isNumber(pin) ? pin : null;
+      $scope.urlPin = (angular.isNumber(pin) && pin > 0) ? pin : null;
       $scope.step = 0;
       $scope.ready = false;
       $scope.due = null;
@@ -96,7 +96,7 @@ angular.module('enbitcoins.controllers')
       $scope.showRefundForm = false;
       $scope.showCorrectionForm = false;
 
-      if ($rootScope.paymentPin || ($scope.urlPin && $scope.urlPin !== 'null')) {
+      if ($rootScope.paymentPin || $scope.urlPin) {
         $scope.validatePin();
       } else {
         $scope.isPrivate = false;
