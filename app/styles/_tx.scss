@@ -54,7 +54,7 @@
   .info-left {
     background: #fff;
     float: left;
-    min-height: 520px;
+    min-height: 575px;
     position: relative;
     width: 60%;
   }
@@ -63,7 +63,7 @@
     background-color: #ecf0f1;
     border-bottom-right-radius: 4px;
     display: inline-block;
-    min-height: 100px;
+    min-height: 575px;
     width: 40%;
   }
 
@@ -73,7 +73,7 @@
   }
 
   .content {
-    padding: 45px 30px 30px 30px;
+    padding: 45px 30px 0 30px;
   }
 
   .qrcode-container {
@@ -82,6 +82,12 @@
 
   .alert {
     margin-top: 20px;
+  }
+
+  .correction-buttons {
+    .btn {
+      margin-bottom: 10px;
+    }
   }
 }
 
