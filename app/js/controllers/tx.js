@@ -155,7 +155,7 @@ angular.module('enbitcoins.controllers')
         .check({
           addr: $routeParams.addr
         }, function(response) {
-          if ($rootScope.paymentPin) {
+          if ($rootScope.paymentPin || $scope.urlPin) {
             $scope.validatePin();
           } else {
             _getTx();
