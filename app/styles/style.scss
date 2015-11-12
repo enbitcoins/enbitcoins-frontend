@@ -111,6 +111,10 @@ textarea.form-control {
   .navbar-link {
     display: block;
     margin-top: 15px;
+
+    .navbar-logo {
+      max-height: 28px;
+    }
   }
 
   .nav-pills {
