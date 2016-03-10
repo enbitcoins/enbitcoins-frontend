@@ -25,6 +25,15 @@
             <div class="alert alert-danger">
               La transacción ha sido cancelada. Ha expirado el tiempo de espera.
             </div>
+            <div class="check-payment" ng-if="showCheckButton()">
+              <p>
+                ¿Realizaste el pago pero esta página no se actualizó aún? ¡No te preocupes!
+              </p>
+              <button type="button" class="btn btn-default btn-lg btn-block" ng-click="checkPayment()" ng-disabled="checkingPayment">
+                <span ng-if="checkingPayment">Verificando...</span>
+                <span ng-if="!checkingPayment">Verificar manualmente</span>
+              </button>
+            </div>
           </div>
 
           <div class="step" ng-if="step === 0 && tx.status !== 'cancelled'">

@@ -179,7 +179,7 @@ angular.module('enbitcoins.controllers')
 
     $scope.showCheckButton = function() {
       var limitDate = moment($scope.tx.created_date).add(20, 'm');
-      return moment().isAfter(limitDate);
+      return moment().isAfter(limitDate) || $scope.tx.status === 'cancelled';
     };
 
     $scope.toggleRefund = function() {
