@@ -133,7 +133,7 @@
                 <i class="fa fa-refresh fa-spin text-yellow"></i>
               </span>
               <span>
-                {{'TX_WAITING_CONFIRMATIONS' | translate}} ({{tx.confirmations}}/{{$root.country.confirmations}})
+                {{'TX_WAITING_CONFIRMATIONS' | translate}} ({{tx.confirmations}}/{{$root.currentCountry.confirmations}})
               </span>
             </h3>
             <h5>
@@ -345,15 +345,15 @@
               </li>
               <li class="list-group-item">
                 <span class="pull-right">
-                  {{$root.country.currency_code}} <strong>{{tx.bill_amount}}</strong>
+                  {{$root.currentCountry.currency_code}} <strong>{{tx.bill_amount}}</strong>
                 </span>
                 <strong>{{'TX_BILL_AMOUNT' | translate}}</strong>
               </li>
               <li class="list-group-item">
                 <span class="pull-right">
-                  {{$root.country.currency_code}} <strong>{{tx.convertion_rate}}</strong>
+                  {{$root.currentCountry.currency_code}} <strong>{{tx.convertion_rate}}</strong>
                 </span>
-                <strong>{{$root.country.currency_code}}/BTC</strong>
+                <strong>{{$root.currentCountry.currency_code}}/BTC</strong>
               </li>
               <li class="list-group-item">
                 <span class="pull-right">

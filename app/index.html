@@ -64,9 +64,20 @@
       <a href="/" class="navbar-link">
         <img src="/img/logo.svg" class="navbar-logo" alt="enBitcoins.com">
       </a>
-      <ul class="nav">
-        <li>M</li>
-      </ul>
+
+      <div class="country-selector hidden-xs">
+        <img ng-src="/img/flags/{{$root.currentCountry.slug}}.png" alt="{{$root.currentCountry.name}}">
+        <i class="fa fa-caret-down"></i>
+        <span class="country-name">{{$root.currentCountry.name}}</span>
+        <ul class="nav">
+          <li ng-repeat="item in countries">
+            <a ng-href="https://{{item.country.slug}}.enbitcoins.com" title="{{item.country.name}}">
+              <img ng-src="/img/flags/{{item.country.slug}}.png"> {{item.country.name}}
+            </a>
+          </li>
+        </ul>
+        <div class="clearfix"></div>
+      </div>
     </nav>
 
     <div id="wrapper" ng-view></div>

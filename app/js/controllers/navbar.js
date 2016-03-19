@@ -1,17 +1,25 @@
 'use strict';
 
 angular.module('enbitcoins.controllers')
-  .controller('NavbarCtrl', ['$rootScope', '$scope', '$routeParams', '$modal', 'Country', 'Ticker', function($rootScope, $scope, $routeParams, $modal, Country, Ticker) {
+  .controller('NavbarCtrl', ['$rootScope', '$scope', '$routeParams', '$modal', 'Country', 'Ticker', 'apiCountry', function($rootScope, $scope, $routeParams, $modal, Country, Ticker, apiCountry) {
 
     $scope.init = function() {
       Country
         .get(function(response) {
-          $rootScope.country = response;
+          $rootScope.currentCountry = response;
         });
 
       Ticker
-        .getLastPrice(function(response) {
-          $scope.priceTxt = response.country.code + ' ' + response.btc;
+        .query(function(items) {
+          $scope.countries = [];
+
+          items.forEach(function(item) {
+            if (item.country.slug === apiCountry) {
+              $scope.priceTxt = item.country.code + ' ' + item.btc;
+            } else {
+              $scope.countries.push(item);
+            }
+          });
         });
     };
 

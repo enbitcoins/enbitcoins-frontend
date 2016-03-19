@@ -1,13 +1,16 @@
 'use strict';
 
 angular.module('enbitcoins.services')
-  .factory('Ticker', ['$resource', 'apiUrl', 'apiCountry', function($resource, apiUrl, apiCountry) {
+  .factory('Ticker', ['$resource', 'apiUrl', function($resource, apiUrl) {
 
-    var urlResource = apiUrl + '/ticker?country=' + apiCountry;
+    var urlResource = apiUrl + '/ticker';
 
     return $resource(urlResource, {},
     {
-      getLastPrice : { method: 'GET' }
+      query: {
+        method: 'GET',
+        isArray: true
+      }
     });
 
   }]);

@@ -109,12 +109,65 @@ textarea.form-control {
   z-index: 999;
 
   .navbar-link {
-    display: block;
+    display: inline-block;
     margin-top: 15px;
 
     .navbar-logo {
       max-height: 28px;
     }
+  }
+
+  .country-selector {
+    background: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 5px;
+    padding: 4px;
+    position: absolute;
+    top: 15px;
+    width: 120px;
+
+    .country-name {
+      display: none;
+    }
+
+    ul.nav {
+      display: none;
+      position: relative;
+      margin-top: 5px;
+
+      li {
+        margin-top: 2px;
+      }
+
+      a {
+        background: #fff;
+        padding: 0;
+
+        img {
+          margin-right: 5px;
+        }
+      }
+    }
+
+    &:hover {
+      border-color: #d4d4d4;
+
+      .country-name {
+        display: inline-block;
+      }
+
+      .fa-caret-down {
+        display: none;
+      }
+
+      ul.nav {
+        display: block;
+      }
+    }
+
   }
 
   .nav-pills {
