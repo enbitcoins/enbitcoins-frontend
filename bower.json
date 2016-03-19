@@ -26,7 +26,8 @@
     "zeroclipboard": "~2.2.0",
     "angular-sanitize": "~1.4.7",
     "angular-upload": "~1.0.12",
-    "angular-typewrite": "~0.0.4"
+    "angular-typewrite": "~0.0.4",
+    "angular-translate": "^2.10.0"
   },
   "resolutions": {
     "angular": "1.4.8"

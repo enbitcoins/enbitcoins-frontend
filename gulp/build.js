@@ -13,13 +13,15 @@ var basePath = {
 var srcAssets = {
   styles  : basePath.src + 'styles/',
   scripts : basePath.src + 'js/',
-  images  : basePath.src + 'img/'
+  images  : basePath.src + 'img/',
+  i18n    : basePath.src + 'i18n/'
 };
 
 var destAssets = {
   styles  : basePath.dest + 'css/',
   scripts : basePath.dest + 'js/',
   images  : basePath.dest + 'img/',
+  i18n    : basePath.dest + 'i18n/',
   fonts   : basePath.dest + 'fonts/'
 };
 
@@ -36,15 +38,19 @@ var imageminOptions = {
   interlaced: true
 };
 
-function handleError(err) {
-  console.error(err.toString());
-  this.emit('end');
-}
+gulp.task('i18n', function() {
+  return gulp.src(srcAssets.i18n + '*.json')
+    .pipe(gulp.dest(destAssets.i18n))
+    .pipe($.size());
+});
 
 gulp.task('styles', function() {
   return gulp.src(srcAssets.styles + '*.scss')
     .pipe($.sass())
-    .on('error', handleError)
+    .on('error', function(err) {
+      console.error(err.toString());
+      this.emit('end');
+    })
     .pipe($.autoprefixer('last 2 version'))
     .pipe($.minifyCss())
     .pipe($.replace('bower_components/bootstrap/dist/fonts', 'fonts'))
@@ -122,4 +128,4 @@ gulp.task('clean', function(cb) {
   $.del(['.tmp', 'public'], cb);
 });
 
-gulp.task('build', ['html', 'fonts', 'images', 'misc']);
+gulp.task('build', ['html', 'fonts', 'images', 'i18n', 'misc']);

@@ -91,7 +91,6 @@
     // Predefined vars
     "predef": [
       "_",
-      "moment",
-      "$"
+      "moment"
     ]
 }

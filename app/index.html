@@ -45,13 +45,13 @@
       <div class="pull-right">
         <ul class="nav nav-pills">
           <li class="hidden-xs">
-            <a href="/seguridad">Seguridad</a>
+            <a href="/seguridad">{{'NAV_SECURITY' | translate}}</a>
           </li>
           <li class="hidden-xs">
-            <a href="/faq">FAQ</a>
+            <a href="/faq">{{'NAV_FAQ' | translate}}</a>
           </li>
           <li class="hidden-xs">
-            <a href="" ng-click="contactModal()">Contacto</a>
+            <a href="" ng-click="contactModal()">{{'NAV_CONTACT' | translate}}</a>
           </li>
           <li class="btc-price">
             <div class="price-box up">
@@ -64,6 +64,9 @@
       <a href="/" class="navbar-link">
         <img src="/img/logo.svg" class="navbar-logo" alt="enBitcoins.com">
       </a>
+      <ul class="nav">
+        <li>M</li>
+      </ul>
     </nav>
 
     <div id="wrapper" ng-view></div>
@@ -80,6 +83,7 @@
 
     <script src="../bower_components/angular-growl/build/angular-growl.js"></script>
     <script src="../bower_components/angular-upload/angular-upload.js"></script>
+    <script src="../bower_components/angular-translate/angular-translate.js"></script>
 
     <script src="../bower_components/angular-typewrite/dist/angular-typewrite.js"></script>
     <script src="../bower_components/ng-clip/dest/ng-clip.min.js"></script>

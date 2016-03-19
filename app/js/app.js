@@ -11,6 +11,7 @@ angular.module('enbitcoins', [
   'ui.bootstrap',
   'ui.bootstrap.tpls',
   'lr.upload',
+  'pascalprecht.translate',
 
   'templates',
 
@@ -34,6 +35,8 @@ var parts = location.hostname.split('.'),
 if (subdomain === 'localhost') {
   subdomain = 'argentina';
 }
+
+var lang = (subdomain === 'brasil') ? 'pt' : 'es';
 
 // Constants
 angular.module('enbitcoins')
@@ -73,6 +76,27 @@ angular.module('enbitcoins')
     ngClipProvider.setPath('lib/ZeroClipboard.swf');
   }])
 
+  .config(['$translateProvider', function($translateProvider) {
+    $translateProvider.useSanitizeValueStrategy('escape');
+
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open('GET', '/i18n/' + lang + '.json');
+    xmlHttp.onreadystatechange = function() {
+      if (xmlHttp.readyState === XMLHttpRequest.DONE) {
+        if (xmlHttp.status === 200) {
+          var response = JSON.parse(xmlHttp.responseText);
+          $translateProvider.translations(lang, response);
+        }
+      }
+    };
+
+    xmlHttp.send();
+  }])
+
   .config(['$compileProvider', function($compileProvider) {
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|bitcoin):/);
+  }])
+
+  .run(['$translate', function ($translate) {
+    $translate.use(lang);
   }]);

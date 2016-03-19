@@ -8,36 +8,36 @@
 
   <div class="row payment-steps">
     <div class="col-md-5 col-md-offset-1 col-xs-5 col-xs-offset-1 step-tab" ng-class="{active: step === 1, ready: step === 2}" ng-click="setStep(1)">
-      1. Empresa
+      1. {{'HOME_COMPANY' | translate}}
     </div>
 
     <div class="col-md-5 col-xs-5 step-tab" ng-class="{active: step === 2}">
-      2. Detalles
+      2. {{'HOME_DETAILS' | translate}}
     </div>
 
     <div id="step1" ng-if="step === 1">
       <div ng-if="!uploadLoading">
         <div class="col-md-5 col-md-offset-1 text-center">
-          <input type="text" ng-model="companySelected" placeholder="Buscar una empresa" typeahead="company as company.name for company in getCompanies($viewValue)" typeahead-loading="loadingCompanies" typeahead-no-results="noResults" typeahead-min-length="2" typeahead-on-select="selectCompany($item)" class="form-control input-lg">
+          <input type="text" ng-model="companySelected" placeholder="{{'HOME_SEARCH_PLACEHOLDER' | translate}}" typeahead="company as company.name for company in getCompanies($viewValue)" typeahead-loading="loadingCompanies" typeahead-no-results="noResults" typeahead-min-length="2" typeahead-on-select="selectCompany($item)" class="form-control input-lg">
           <i ng-show="loadingCompanies" class="fa fa-refresh fa-spin text-blue"></i>
           <div class="no-results text-red" ng-show="noResults">
-            <i class="fa fa-times"></i> Sin resultados
+            <i class="fa fa-times"></i> {{'HOME_NO_RESULTS' | translate}}
           </div>
         </div>
 
         <div class="col-md-5 text-center">
-          <div class="btn btn-success btn-lg btn-block btn-upload" upload-button url="https://api.enbitcoins.com/v1/upload?country={{$root.country.slug}}" param="file" data="formData" accept="image/*,application/pdf" required="true" on-upload="onUpload()" on-success="onSuccess(response)" on-error="onError(response)" on-complete="onComplete()">Subir factura electrónica</div>
+          <div class="btn btn-success btn-lg btn-block btn-upload" upload-button url="https://api.enbitcoins.com/v1/upload?country={{$root.country.slug}}" param="file" data="formData" accept="image/*,application/pdf" required="true" on-upload="onUpload()" on-success="onSuccess(response)" on-error="onError(response)" on-complete="onComplete()">{{'HOME_UPLOAD_FILE' | translate}}</div>
         </div>
 
         <div class="col-md-12 col-xs-12 text-center help-text">
-          <p>Selecciona una empresa de la lista ó sube una factura electrónica.</p>
+          <p>{{'HOME_UPLOAD_LEGEND' | translate}}.</p>
         </div>
       </div>
 
       <div class="col-md-10 col-md-offset-1 col-xs-12" ng-if="uploadLoading">
         <div class="progress">
           <div class="progress-bar progress-bar-success progress-bar-striped active" style="width: 100%;">
-            Subiendo archivo...
+            {{'HOME_UPLOADING' | translate}}...
           </div>
         </div>
       </div>
@@ -46,7 +46,7 @@
     <div id="step2" ng-if="step === 2">
       <form name="paymentForm" ng-submit="confirm()">
         <div class="form-group col-md-5 col-md-offset-1 col-xs-12">
-          <label for="amount">Monto</label>
+          <label for="amount">{{'HOME_AMOUNT' | translate}}</label>
           <div class="input-group">
             <span class="input-group-addon">
               <i class="fa fa-usd"></i>
@@ -56,7 +56,7 @@
         </div>
         <div class="form-group col-md-5 col-xs-12">
           <label for="code">
-            {{company.pay_data_name || 'Código de pago electrónico'}}
+            {{company.pay_data_name || 'HOME_PAY_DATA_NAME' | translate }}
             <i class="fa fa-question-circle text-blue" popover="{{company.pay_data_help}}" popover-trigger="mouseenter"></i>
           </label>
           <div class="input-group">
@@ -69,8 +69,8 @@
 
         <div class="form-group col-md-5 col-md-offset-1 col-xs-12">
           <label for="email">
-            Email <small class="text-muted">(opcional)</small>
-            <i class="fa fa-question-circle text-blue" popover="Correo electrónico para recibir notificaciones sobre el estado de su pago." popover-trigger="mouseenter"></i>
+            Email <small class="text-muted">({{'HOME_OPTIONAL' | translate}})</small>
+            <i class="fa fa-question-circle text-blue" popover="{{'HOME_EMAIL_POPOVER' | translate}}." popover-trigger="mouseenter"></i>
           </label>
           <div class="input-group">
             <span class="input-group-addon">
@@ -81,8 +81,8 @@
         </div>
         <div class="form-group col-md-5 col-xs-12">
           <label for="pin">
-            PIN <small class="text-muted">(opcional)</small>
-            <i class="fa fa-question-circle text-blue" popover="PIN numérico para restringir el acceso a los datos de su pago." popover-trigger="mouseenter"></i>
+            PIN <small class="text-muted">({{'HOME_OPTIONAL' | translate}})</small>
+            <i class="fa fa-question-circle text-blue" popover="{{'HOME_PIN_POPOVER' | translate}}." popover-trigger="mouseenter"></i>
           </label>
           <div class="input-group">
             <span class="input-group-addon">
@@ -94,8 +94,8 @@
 
         <div class="col-md-10 col-md-offset-1 col-xs-12">
           <button type="submit" class="btn btn-lg btn-success btn-block" ng-disabled="paymentForm.$invalid || sending">
-            <span ng-if="sending">Confirmando...</span>
-            <span ng-if="!sending">Confirmar</span>
+            <span ng-if="sending">{{'HOME_BTN_SENDING' | translate}}...</span>
+            <span ng-if="!sending">{{'HOME_BTN_CONFIRM' | translate}}</span>
           </button>
         </div>
       </form>
