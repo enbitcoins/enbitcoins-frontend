@@ -67,7 +67,7 @@
   "TX_PROVISION_COMPLETE": "Pago completado",
   "TX_DOWNLOAD_INVOICE": "Descarga el comprobante",
   "TX_DOWNLOAD_INVOICE_DETAILS": "Puedes descargar el comprobante ahora o guardar esta dirección para futuras consultas",
-  "TX_DOWNLAOD_BTN": "Descargar",
+  "TX_DOWNLOAD_BTN": "Descargar",
   "TX_SOCIAL_MSG": "¿Te gustó el servicio? ¡Comentale a tus amigos!",
   "TX_REFUND_COMPLETE": "Pago reembolsado",
   "TX_INFO_MSG_1": "Puedes ver la información de la transaccción desde el",
