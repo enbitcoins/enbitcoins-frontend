@@ -36,7 +36,17 @@ if (subdomain === 'localhost') {
   subdomain = 'argentina';
 }
 
-var lang = (subdomain === 'brasil') ? 'pt' : 'es';
+var lang;
+switch (subdomain) {
+  case 'brasil':
+    lang = 'pt';
+    break;
+    case 'russia':
+      lang = 'ru';
+      break;
+  default:
+    lang = 'es';
+}
 
 // Constants
 angular.module('enbitcoins')
