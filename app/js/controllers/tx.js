@@ -3,15 +3,15 @@
 angular.module('enbitcoins.controllers')
   .controller('TransactionCtrl', ['$rootScope', '$scope', '$routeParams', '$timeout', '$location', '$filter', 'notifications', 'Transactions', 'Payments', 'apiCountry', function($rootScope, $scope, $routeParams, $timeout, $location, $filter, notifications, Transactions, Payments, apiCountry) {
 
-    var _getFileUrl = function(filename) {
+    function _getFileUrl(filename) {
       return 'https://files.enbitcoins.com/' + apiCountry + '/' + filename;
-    };
+    }
 
-    var _getBitcoinUrl = function(tx) {
+    function _getBitcoinUrl(tx) {
       return 'bitcoin:' + tx.addr + '?amount=' + $filter('toBitcoins')($scope.due || tx.due_amount_satoshis);
-    };
+    }
 
-    var _getStep = function(status) {
+    function _getStep(status) {
       if (status === 'waitingForBitcoins') return 0;
       if (status === 'waitingForConfirmations') return 1;
       if (status === 'waitingForMoreBitcoins') return 1;
@@ -20,9 +20,9 @@ angular.module('enbitcoins.controllers')
       if (status === 'waitingForProvision') return 2;
       if (status === 'finished') return 3;
       if (status === 'refunded') return 4;
-    };
+    }
 
-    var _getTx = function() {
+    function _getTx() {
       Transactions
         .get({
           addr: $routeParams.addr
@@ -54,7 +54,7 @@ angular.module('enbitcoins.controllers')
             $location.path('404');
           }
         });
-    };
+    }
 
     $scope.init = function() {
       var pin = parseInt($location.search().pin, 10) || null;
