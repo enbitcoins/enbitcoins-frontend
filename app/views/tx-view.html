@@ -174,22 +174,22 @@
 
             <div class="row correction-buttons" ng-hide="showCorrectionForm || showRefundForm">
               <div class="col-md-6 col-xs-12">
-                <button type="button" class="btn btn-success btn-block" ng-click="toggleCorrection()">
+                <button type="button" class="btn btn-success btn-block" ng-click="toggleForm('correction')">
                   {{'TX_CORRECTION_BTN' | translate}}
                 </button>
               </div>
               <div class="col-md-6 col-xs-12">
-                <button type="button" class="btn btn-danger btn-block" ng-click="toggleRefund()">
+                <button type="button" class="btn btn-danger btn-block" ng-click="toggleForm('refund')">
                   {{'TX_REFUND_BTN' | translate}}
                 </button>
               </div>
             </div>
 
             <!-- Correction Form -->
-            <form name="correctionForm" ng-submit="responseCorrection()" ng-if="showCorrectionForm">
+            <form name="correctionForm" ng-submit="responseCorrection()" ng-if="formOpened && formToggled === 'correction'">
               <div class="form-group">
                 <label for="correction-response">{{'TX_CORRECTION_LABEL' | translate}}</label>
-                <textarea id="correction-response" ng-model="$root.correctionMsg" rows="3" class="form-control" ng-disabled="sending" required></textarea>
+                <textarea id="correction" ng-model="$root.correctionMsg" rows="3" class="form-control" ng-disabled="sending" required></textarea>
               </div>
               <hr>
               <div class="pull-right">
@@ -201,14 +201,14 @@
             </form>
 
             <!-- Refund Form -->
-            <form name="refundForm" ng-submit="askRefund()" ng-if="showRefundForm">
+            <form name="refundForm" ng-submit="askRefund()" ng-if="formOpened && formToggled === 'refund'">
               <div class="form-group">
                 <label for="refund-addr">{{'TX_REFUND_LABEL' | translate}}</label>
                 <div class="input-group">
                   <div class="input-group-addon">
                     <i class="fa fa-qrcode"></i>
                   </div>
-                  <input type="text" id="refund-addr" class="form-control" ng-model="$root.refundAddr" ng-disabled="sending" required>
+                  <input type="text" id="refund" class="form-control" ng-model="$root.refundAddr" ng-disabled="sending" required>
                 </div>
               </div>
               <hr>

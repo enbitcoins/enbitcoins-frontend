@@ -12,43 +12,14 @@ angular.module('enbitcoins.controllers')
     };
 
     var _getStep = function(status) {
-      var step;
-
-      switch (status) {
-      case 'waitingForBitcoins':
-        step = 0;
-        break;
-
-      case 'waitingForConfirmations':
-        step = 1;
-        break;
-
-      case 'waitingForMoreBitcoins':
-        step = 1;
-        break;
-
-      case 'waitingForCorrection':
-        step = 2;
-        break;
-
-      case 'waitingForRefund':
-        step = 2;
-        break;
-
-      case 'waitingForProvision':
-        step = 2;
-        break;
-
-      case 'finished':
-        step = 3;
-        break;
-
-      case 'refunded':
-        step = 4;
-        break;
-      }
-
-      return step;
+      if (status === 'waitingForBitcoins') return 0;
+      if (status === 'waitingForConfirmations') return 1;
+      if (status === 'waitingForMoreBitcoins') return 1;
+      if (status === 'waitingForCorrection') return 2;
+      if (status === 'waitingForRefund') return 2;
+      if (status === 'waitingForProvision') return 2;
+      if (status === 'finished') return 3;
+      if (status === 'refunded') return 4;
     };
 
     var _getTx = function() {
@@ -182,26 +153,14 @@ angular.module('enbitcoins.controllers')
       return moment().isAfter(limitDate) || $scope.tx.status === 'cancelled';
     };
 
-    $scope.toggleRefund = function() {
-      $scope.showRefundForm = !$scope.showRefundForm;
+    $scope.toggleForm = function(id) {
+      $scope.formToggled = id;
+      $scope.formOpened = !$scope.formOpened;
 
-      if ($scope.showRefundForm === true) {
-        $timeout(function() {
-          var input = angular.element(document.getElementById('refund-addr'));
-          input[0].focus();
-        }, 400);
-      }
-    };
-
-    $scope.toggleCorrection = function() {
-      $scope.showCorrectionForm = !$scope.showCorrectionForm;
-
-      if ($scope.showCorrectionForm === true) {
-        $timeout(function() {
-          var textarea = angular.element(document.getElementById('correction-response'));
-          textarea[0].focus();
-        }, 400);
-      }
+      $timeout(function() {
+        var input = angular.element(document.getElementById(id));
+        input[0].focus();
+      }, 400);
     };
 
     $scope.responseCorrection = function() {
