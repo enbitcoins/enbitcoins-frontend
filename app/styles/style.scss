@@ -18,14 +18,6 @@ body {
   }
 }
 
-.footer, #wrapper:after {
-  height: 142px;
-}
-
-.footer {
-  background: orange;
-}
-
 // Import files
 @import 'variables';
 @import 'home';
@@ -316,7 +308,7 @@ textarea.form-control {
 
 /* Footer */
 .footer,
-.page-wrap:after {
+#wrapper:after {
   min-height: 210px;
 }
 
