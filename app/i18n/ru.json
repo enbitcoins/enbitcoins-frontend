@@ -73,6 +73,7 @@
   "TX_INFO_MSG_1": "Вы можете посмотреть информацию о платежах от",
   "TX_INFO_MSG_2": "по ссылке",
   "TX_BILL_COMPANY": "Компания",
+  "TX_BILL_CODE": "кодовое/число",
   "TX_BILL_FILE_VIEW": "Открыть файл ",
   "TX_BILL_FILE": "файл",
   "TX_BILL_AMOUNT": "импортировать",

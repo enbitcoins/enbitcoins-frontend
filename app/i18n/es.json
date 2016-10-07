@@ -73,6 +73,7 @@
   "TX_INFO_MSG_1": "Puedes ver la información de la transaccción desde el",
   "TX_INFO_MSG_2": "siguiente enlace",
   "TX_BILL_COMPANY": "Empresa",
+  "TX_BILL_CODE": "Código/Número",
   "TX_BILL_FILE_VIEW": "Ver Archivo",
   "TX_BILL_FILE": "Archivo",
   "TX_BILL_AMOUNT": "Importe",

@@ -337,6 +337,12 @@
                 </span>
                 <strong>{{'TX_BILL_COMPANY' | translate}}</strong>
               </li>
+              <li class="list-group-item" ng-if="tx.bill_company">
+                <span class="pull-right">
+                  {{tx.bill_code}}
+                </span>
+                <strong>{{'TX_BILL_CODE' | translate}}</strong>
+              </li>
               <li class="list-group-item" ng-if="fileUrl">
                 <a ng-href="{{fileUrl}}" class="pull-right" target="_blank">
                   {{'TX_BILL_FILE_VIEW' | translate}}
